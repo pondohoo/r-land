@@ -24,15 +24,21 @@ const LoginButton = () => {
         friendList: [],
         cardList: [],
       });
+      setUser({
+        userName: user.displayName,
+        uid: user.uid,
+        joinTime: Timestamp.now(),
+        friendList: [],
+        cardList: [],
+      });
     } else {
       setUser({
         name: docSnap.data().userName,
-        uid: uid,
+        uid: user.uid,
         joinTime: docSnap.data().joinTIme,
         friendList: docSnap.data().friendList,
         cardList: docSnap.data().cardList,
       });
-      res.status(200).json({});
     }
   };
 
@@ -41,9 +47,9 @@ const LoginButton = () => {
 
   const signin = () => {
     signInWithPopup(auth, new GoogleAuthProvider())
-      .then((user) => {
+      .then((user, setUser) => {
         // console.log(user);
-        getUser(user.user);
+        getUser(user.user, setUser);
         router.push("/collection");
       })
       .catch((error) => {
@@ -55,10 +61,11 @@ const LoginButton = () => {
 
   const login = () => {
     setPersistence(auth, browserLocalPersistence)
-      .then((res) => {
+      .then(() => {
         signin();
       })
       .catch((error) => {
+        console.log(error);
         router.push("/");
       });
   };
