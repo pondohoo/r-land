@@ -1,7 +1,13 @@
 import React from "react";
+import BottomNav from "./BottomNav";
 
-const Layout = () => {
-  return <div>Layout</div>;
+const Layout = ({ children }) => {
+  return (
+    <>
+      <main>{children}</main>
+      <BottomNav />
+    </>
+  );
 };
 
 export default Layout;
