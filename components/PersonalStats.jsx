@@ -1,10 +1,10 @@
 import React from "react";
 import greyProfile from "../public/greyProfile.svg";
 import Image from "next/image";
-import Heart from "../public/heart.svg";
-import Club from "../public/club.svg";
-import Diamond from "../public/diamond.svg";
-import Spade from "../public/spade.svg";
+import Heart from "../public/Heart.svg";
+import Club from "../public/Club.svg";
+import Diamond from "../public/Diamond.svg";
+import Spade from "../public/Spade.svg";
 
 const PersonalStats = () => {
   return (
