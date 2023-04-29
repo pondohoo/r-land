@@ -1,14 +1,15 @@
 import React from "react";
-import greyProfile from "../public/greyProfile.svg";
 import Image from "next/image";
+
 import Heart from "../public/Heart.svg";
 import Club from "../public/Club.svg";
 import Diamond from "../public/Diamond.svg";
 import Spade from "../public/Spade.svg";
+import greyProfile from "../public/GreyProfile.svg";
 
 const PersonalStats = () => {
   return (
-    <div className="p-2 px-10 items-center gap-5 bg-rland-darkgray flex">
+    <div className="w-full p-2 px-10 items-center gap-5 bg-rland-darkgray flex">
       <div className="h-full gap-2 flex flex-col">
         <Image
           className="w-full h-full bg-white"

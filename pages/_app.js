@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import { Teko, Pirata_One } from "next/font/google";
+import { useEffect, useState } from "react";
 import "../styles/globals.css";
 import Layout from "../components/Layout";
 import UserContext from "../components/UserContext";
-import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { db, auth } from "../firebase";
@@ -23,15 +23,21 @@ const pirata = Pirata_One({
 
 export default function App({ Component, pageProps }) {
   const [user, setUser] = useState(null);
+  const [position, setPosition] = useState(null);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position);
+      setPosition({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    });
+  }, []);
+
   const updateUserContext = async (currentUser) => {
     const docSnap = await getDoc(doc(db, "users", currentUser.uid));
-    setUser({
-      name: docSnap.data().userName,
-      uid: currentUser.uid,
-      joinTime: docSnap.data().joinTIme,
-      friendList: docSnap.data().friendList,
-      cardList: docSnap.data().cardList,
-    });
+    setUser({ ...docSnap.data(), uid: currentUser.uid });
   };
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
@@ -40,13 +46,16 @@ export default function App({ Component, pageProps }) {
       }
     });
   }, []);
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <div className={`${teko.variable} ${pirata.variable}`}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </div>
-    </UserContext.Provider>
+    position && (
+      <UserContext.Provider value={{ user, setUser, position, setPosition }}>
+        <div className={`${teko.variable} ${pirata.variable}`}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </div>
+      </UserContext.Provider>
+    )
   );
 }
