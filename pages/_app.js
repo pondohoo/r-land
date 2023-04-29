@@ -3,7 +3,7 @@ import { Teko, Pirata_One } from "next/font/google";
 import "../styles/globals.css";
 import Layout from "../components/Layout";
 import UserContext from "../components/UserContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // eslint-disable-next-line new-cap
 const teko = Teko({
@@ -20,13 +20,27 @@ const pirata = Pirata_One({
 
 export default function App({ Component, pageProps }) {
   const [user, setUser] = useState(null);
+  const [position, setPosition] = useState(null);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position);
+      setPosition({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    });
+  }, []);
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <div className={`${teko.variable} ${pirata.variable}`}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </div>
-    </UserContext.Provider>
+    position && (
+      <UserContext.Provider value={{ user, setUser, position, setPosition }}>
+        <div className={`${teko.variable} ${pirata.variable}`}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </div>
+      </UserContext.Provider>
+    )
   );
 }
