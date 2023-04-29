@@ -1,14 +1,93 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../public/Card.svg";
 import CardBack from "../public/CardBack.svg";
 import LeftArrow from "../public/LeftArrow.svg";
 import RightArrow from "../public/RightArrow.svg";
 import Image from "next/image";
+import CollectionToggle from "../components/CollectionToggle";
+import Heart from "../public/Heart.svg";
+import Club from "../public/Club.svg";
+import Diamond from "../public/Diamond.svg";
+import Spade from "../public/Spade.svg";
+import CardDim from "../public/CardDim.svg";
+
+// array of cards
+const cards = [
+  {
+    id: 1,
+    toggled: false,
+  },
+  {
+    id: 2,
+    toggled: false,
+  },
+  {
+    id: 3,
+    toggled: false,
+  },
+  {
+    id: 4,
+    toggled: true,
+  },
+  {
+    id: 5,
+    toggled: false,
+  },
+  {
+    id: 6,
+    toggled: true,
+  },
+  {
+    id: 7,
+    toggled: false,
+  },
+  {
+    id: 8,
+    toggled: true,
+  },
+  {
+    id: 9,
+    toggled: false,
+  },
+  {
+    id: 10,
+    toggled: false,
+  },
+  {
+    id: 11,
+    toggled: true,
+  },
+  {
+    id: 12,
+    toggled: false,
+  },
+  {
+    id: 13,
+    toggled: true,
+  },
+  {
+    id: 14,
+    toggled: false,
+  },
+  {
+    id: 15,
+    toggled: true,
+  },
+  {
+    id: 16,
+    toggled: false,
+  },
+];
 
 const collection = () => {
-  return (
+  const [pageState, setPageState] = useState(true);
+
+  return pageState ? (
     <div className="flex flex-col justify-around w-full h-screen bg-rland-darkgray">
-      <div className="left-0 right-0 top-5">Collection toggle</div>
+      <div>
+        <CollectionToggle setPageState={setPageState} />
+      </div>
+
       <div className="flex flex-col">
         <div className="flex justify-center items-center flex-col">
           <p className="text-white font-pirata text-3xl">SPADE 5</p>
@@ -37,6 +116,31 @@ const collection = () => {
           <Image priority src={LeftArrow} alt="" />
           <p className="text-rland-red font-teko text-2xl">25 points</p>
           <Image priority src={RightArrow} alt="" />
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div className="flex flex-col w-full h-screen bg-rland-darkgray">
+      <div className="h-5/6 flex flex-col justify-center">
+        <CollectionToggle setPageState={setPageState} />
+        <div className="mx-5 mb-5 flex justify-between">
+          <Image src={Spade} alt="" />
+          <Image src={Heart} alt="" />
+          <Image src={Club} alt="" />
+          <Image src={Diamond} alt="" />
+        </div>
+        <div className="justify-center items-center gap-0 grid-cols-4 grid">
+          {cards.map((card) => {
+            return card.toggled ? (
+              <div className="w-full h-full flex justify-center items-center">
+                <Image className="w-3/4" key={card.id} src={Card} alt="" />
+              </div>
+            ) : (
+              <div className="w-full h-full flex justify-center items-center">
+                <Image className="" key={card.id} src={CardDim} alt="" />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
