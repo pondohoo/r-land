@@ -1,10 +1,11 @@
 import React from "react";
-import greyProfile from "../public/grey_profile.svg";
+import greyProfile from "../public/greyProfile.svg";
 import ranking1 from "../public/ranking1.svg";
 import ranking2 from "../public/ranking2.svg";
 import ranking3 from "../public/ranking3.svg";
 import ranking4 from "../public/ranking4.svg";
 import ranking5 from "../public/ranking5.svg";
+import PersonalStats from "../components/PersonalStats";
 
 import Image from "next/image";
 
@@ -86,6 +87,7 @@ const ranking = () => {
         </div>
         <Image priority className="w-screen h-auto" src={ranking5} alt="" />
       </div>
+      <PersonalStats />
     </div>
   );
 };
