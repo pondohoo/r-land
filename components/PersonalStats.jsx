@@ -1,26 +1,46 @@
 import React from "react";
 import Image from "next/image";
-import CardCount from "../components/CardCount";
-import porfileIMG from "../public/ProfileIMG.svg";
+
+import Heart from "../public/Heart.svg";
+import Club from "../public/Club.svg";
+import Diamond from "../public/Diamond.svg";
+import Spade from "../public/Spade.svg";
+import greyProfile from "../public/GreyProfile.svg";
+
 const PersonalStats = () => {
   return (
-    <div className=" font-teko px-7 py-2 w-full items-center justify-center bg-rland-darkgray flex ">
-      <div className=" w-11/12 flex flex-row justify-between items-center">
-        <div className=" flex flex-col items-center">
-          <Image height={70} src={porfileIMG} />
-          <p className=" mt-2 text-white text-xl uppercase ">Menthy Wu</p>
-        </div>
-        <div className="pt-3 w-9/12">
-          <p className=" text-2xl text-rland-red font-teko">
-            You are in the top 1%
-          </p>
-          <div className="w-full flex-row flex justify-between">
-            <p className="font-bold text-4xl text-white">520</p>
-            <div className=" mt-5 grid grid-rows-2 grid-cols-2">
-              <CardCount type="spade" number="1" />
-              <CardCount type="heart" number="2" />
-              <CardCount type="diamond" number="3" />
-              <CardCount type="cube" number="4" />
+    <div className="w-full p-2 px-10 items-center gap-5 bg-rland-darkgray flex">
+      <div className="h-full gap-2 flex flex-col">
+        <Image
+          className="w-full h-full bg-white"
+          priority
+          src={greyProfile}
+          alt=""
+        />
+        <p className="text-white text-xl font-teko font-thin">Your Name</p>
+      </div>
+      <div className="flex w-3/4 flex-col">
+        <p className=" text-rland-red text-2xl font-teko">
+          You are in the top 1%
+        </p>
+        <div className="flex text-white gap-8">
+          <p className="m-0 p-0 font-teko text-3xl text-white font-bold">520</p>
+          <div className="text-white text-2xl mt-3 font-pirata gap-x-8 grid grid-cols-2">
+            <div className="flex items-center gap-3">
+              <Image className="h-3/4" src={Spade} alt="" />
+              <p>3</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <Image className="h-3/4" src={Diamond} alt="" />
+              <p>3</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <Image className="h-3/4" src={Heart} alt="" />
+              <p>3</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <Image className="h-3/4" src={Club} alt="" />
+              <p>3</p>
             </div>
           </div>
         </div>
