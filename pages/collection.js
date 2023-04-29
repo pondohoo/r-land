@@ -82,7 +82,7 @@ const cards = [
 const collection = () => {
   const [pageState, setPageState] = useState(true);
 
-  return !pageState ? (
+  return pageState ? (
     <div className="flex flex-col justify-around w-full h-screen bg-rland-darkgray">
       <div>
         <CollectionToggle setPageState={setPageState} />
@@ -120,21 +120,25 @@ const collection = () => {
       </div>
     </div>
   ) : (
-    <div className="flex flex-col justify-center w-full h-screen bg-rland-darkgray">
-      <CollectionToggle setPageState={setPageState} />
-      <div className="h-2/3">
-        <div className="flex justify-around">
+    <div className="flex flex-col w-full h-screen bg-rland-darkgray">
+      <div className="h-5/6 flex flex-col justify-center">
+        <CollectionToggle setPageState={setPageState} />
+        <div className="mx-5 mb-5 flex justify-between">
           <Image src={Spade} alt="" />
           <Image src={Heart} alt="" />
           <Image src={Club} alt="" />
           <Image src={Diamond} alt="" />
         </div>
-        <div className="grid-cols-4 grid">
+        <div className="justify-center items-center gap-0 grid-cols-4 grid">
           {cards.map((card) => {
             return card.toggled ? (
-              <Image className="w-3/4" key={card.id} src={Card} alt="" />
+              <div className="w-full h-full flex justify-center items-center">
+                <Image className="w-3/4" key={card.id} src={Card} alt="" />
+              </div>
             ) : (
-              <Image className="w-3/4" key={card.id} src={CardDim} alt="" />
+              <div className="w-full h-full flex justify-center items-center">
+                <Image className="" key={card.id} src={CardDim} alt="" />
+              </div>
             );
           })}
         </div>
