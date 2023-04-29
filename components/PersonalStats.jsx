@@ -1,19 +1,28 @@
 import React from "react";
-import greyProfile from "../public/greyProfile.svg";
 import Image from "next/image";
-
+import CardCount from "../components/CardCount";
+import porfileIMG from "../public/ProfileIMG.svg";
 const PersonalStats = () => {
   return (
-    <div className="flex">
-      <div className="flex flex-col justify-center">
-        <Image className="bg-white" priority src={greyProfile} alt="" />
-        <p className="text-white font-teko font-thin">Your Name</p>
-      </div>
-      <div className="flex flex-col">
-        <p className="text-rland-red font-teko">You are in the top 1%</p>
-        <div className="flex">
-          <p>520</p>
-          <div className="grid">3 3 3 3</div>
+    <div className=" font-teko px-7 py-2 w-full items-center justify-center bg-rland-darkgray flex ">
+      <div className=" w-11/12 flex flex-row justify-between items-center">
+        <div className=" flex flex-col items-center">
+          <Image height={70} src={porfileIMG} />
+          <p className=" mt-2 text-white text-xl uppercase ">Menthy Wu</p>
+        </div>
+        <div className="pt-3 w-9/12">
+          <p className=" text-2xl text-rland-red font-teko">
+            You are in the top 1%
+          </p>
+          <div className="w-full flex-row flex justify-between">
+            <p className="font-bold text-4xl text-white">520</p>
+            <div className=" mt-5 grid grid-rows-2 grid-cols-2">
+              <CardCount type="spade" number="1" />
+              <CardCount type="heart" number="2" />
+              <CardCount type="diamond" number="3" />
+              <CardCount type="cube" number="4" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
