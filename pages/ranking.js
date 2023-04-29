@@ -11,7 +11,7 @@ import Image from "next/image";
 
 const ranking = () => {
   return (
-    <div className="bg-rland-darkgray w-screen h-screen">
+    <div className="bg-rland-black w-screen h-screen">
       <div className="relative">
         <div className="absolute w-3/4 h-full gap-8 flex justify-center items-center">
           <Image className="bg-white w-1/5" priority src={greyProfile} alt="" />
