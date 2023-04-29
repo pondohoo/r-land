@@ -11,6 +11,8 @@ import {
 } from "@firebase/auth";
 import { doc, getDoc, setDoc, Timestamp } from "firebase/firestore";
 import { db } from "../firebase";
+import enterNow from "../public/EnterNow.svg";
+import Image from "next/image";
 
 const LoginButton = () => {
   const getUser = async (user) => {
@@ -70,7 +72,11 @@ const LoginButton = () => {
       });
   };
 
-  return <button onClick={login}>login</button>;
+  return (
+    <button onClick={login}>
+      <Image className=" opacity-80 scale-95" src={enterNow} />
+    </button>
+  );
 };
 
 export default LoginButton;
