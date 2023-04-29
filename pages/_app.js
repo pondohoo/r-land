@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
 
   const updateUserContext = async (currentUser) => {
     const docSnap = await getDoc(doc(db, "users", currentUser.uid));
-    setUser(docSnap.data());
+    setUser({ ...docSnap.data(), uid: currentUser.uid });
   };
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
