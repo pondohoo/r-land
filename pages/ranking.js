@@ -1,5 +1,5 @@
 import React from "react";
-import GreyProfile from "../public/GreyProfile.svg";
+import greyProfile from "../public/greyProfile.svg";
 import ranking1 from "../public/ranking1.svg";
 import ranking2 from "../public/ranking2.svg";
 import ranking3 from "../public/ranking3.svg";
@@ -14,7 +14,7 @@ const ranking = () => {
     <div className="bg-rland-darkgray">
       <div className="relative">
         <div className="absolute w-3/4 h-full gap-8 flex justify-center items-center">
-          <Image className="bg-white w-1/5" priority src={GreyProfile} alt="" />
+          <Image className="bg-white w-1/5" priority src={greyProfile} alt="" />
           <div className="mt-2 flex flex-col">
             <p className="font-pirata text-3xl text-white">JOKER</p>
             <div className="flex gap-2">
@@ -38,13 +38,13 @@ const ranking = () => {
               </p>
             </div>
           </div>
-          <Image className="bg-white w-1/5" priority src={GreyProfile} alt="" />
+          <Image className="bg-white w-1/5" priority src={greyProfile} alt="" />
         </div>
         <Image priority className="w-screen h-auto" src={ranking2} alt="" />
       </div>
       <div className="relative">
         <div className="absolute w-3/4 h-full gap-8 flex justify-center items-center">
-          <Image className="bg-white w-1/5" priority src={GreyProfile} alt="" />
+          <Image className="bg-white w-1/5" priority src={greyProfile} alt="" />
           <div className="mt-2 flex flex-col">
             <p className="font-pirata text-3xl text-white">JOKER</p>
             <div className="flex gap-2">
@@ -68,13 +68,13 @@ const ranking = () => {
               </p>
             </div>
           </div>
-          <Image className="bg-white w-1/5" priority src={GreyProfile} alt="" />
+          <Image className="bg-white w-1/5" priority src={greyProfile} alt="" />
         </div>
         <Image priority className="w-screen h-auto" src={ranking4} alt="" />
       </div>
       <div className="relative">
         <div className="absolute w-3/4 h-full gap-8 flex justify-center items-center">
-          <Image className="bg-white w-1/5" priority src={GreyProfile} alt="" />
+          <Image className="bg-white w-1/5" priority src={greyProfile} alt="" />
           <div className="mt-2 flex flex-col">
             <p className="font-pirata text-3xl text-white">JOKER</p>
             <div className="flex gap-2">

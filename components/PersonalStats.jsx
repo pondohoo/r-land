@@ -5,7 +5,7 @@ import Heart from "../public/Heart.svg";
 import Club from "../public/Club.svg";
 import Diamond from "../public/Diamond.svg";
 import Spade from "../public/Spade.svg";
-import greyProfile from "../public/GreyProfile.svg";
+import greyProfile from "../public/greyProfile.svg";
 
 const PersonalStats = () => {
   return (
