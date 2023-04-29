@@ -1,7 +1,14 @@
 import React from "react";
-
-const Layout = () => {
-  return <div>Layout</div>;
+import BottomNav from "./BottomNav";
+import TopBar from "./TopBar";
+const Layout = ({ children }) => {
+  return (
+    <>
+      <TopBar />
+      <main>{children}</main>
+      <BottomNav />
+    </>
+  );
 };
 
 export default Layout;
