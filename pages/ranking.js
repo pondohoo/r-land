@@ -11,10 +11,14 @@ import Image from "next/image";
 const ranking = () => {
   return (
     <div>
-      <div>
-        <Image priority src={greyProfile} alt="" />
-      </div>
-      <div>
+      <div className="relative">
+        <div className="absolute h-full left-8 top-0 flex items-center">
+          <Image className="" priority src={greyProfile} alt="" />
+          <div className="flex flex-col">
+            <p>Joker</p>
+            <p>Menthy Wu</p>
+          </div>
+        </div>
         <Image priority src={ranking1} alt="" />
       </div>
       <div>
