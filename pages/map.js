@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useContext } from "react";
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import UserContext from "../components/UserContext";
 
 const Map = () => {
@@ -38,7 +38,13 @@ const Map = () => {
               zoomControl: false,
               mapTypeControl: false,
             }}
-          ></GoogleMap>
+          >
+            <Marker
+              icon="https://firebasestorage.googleapis.com/v0/b/r-land.appspot.com/o/mapRange.svg?alt=media&token=7567bf6d-8ccb-4c67-9001-42aeef98e67c"
+              position={position}
+              anchorPoint={new window.google.maps.Point(0.5, 0.5)}
+            />
+          </GoogleMap>
         </div>
       )}
     </div>
