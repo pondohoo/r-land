@@ -1,8 +1,8 @@
 import React from "react";
 import Card from "../public/Card.svg";
 import CardBack from "../public/CardBack.svg";
-import leftArrow from "../public/leftArrow.svg";
-import rightArrow from "../public/rightArrow.svg";
+import LeftArrow from "../public/LeftArrow.svg";
+import RightArrow from "../public/RightArrow.svg";
 import Image from "next/image";
 
 const collection = () => {
@@ -34,9 +34,9 @@ const collection = () => {
         <hr className="mt-10 border-rland-red" />
         <div className="bg-gradient-to-b opacity-20 from-rland-red w-screen h-1/3" />
         <div className="flex items-center justify-around">
-          <Image priority src={leftArrow} alt="" />
+          <Image priority src={LeftArrow} alt="" />
           <p className="text-rland-red font-teko text-2xl">25 points</p>
-          <Image priority src={rightArrow} alt="" />
+          <Image priority src={RightArrow} alt="" />
         </div>
       </div>
     </div>
