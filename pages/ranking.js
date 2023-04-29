@@ -1,5 +1,5 @@
 import React from "react";
-import GreyProfile from "../public/GreyProfile.svg";
+import greyProfile from "../public/greyProfile.svg";
 import ranking1 from "../public/ranking1.svg";
 import ranking2 from "../public/ranking2.svg";
 import ranking3 from "../public/ranking3.svg";
@@ -18,7 +18,7 @@ const ranking = () => {
             <Image
               className="bg-white w-1/5"
               priority
-              src={GreyProfile}
+              src={greyProfile}
               alt=""
             />
             <div className="mt-2 flex flex-col">
@@ -47,7 +47,7 @@ const ranking = () => {
             <Image
               className="bg-white w-1/5"
               priority
-              src={GreyProfile}
+              src={greyProfile}
               alt=""
             />
           </div>
@@ -58,7 +58,7 @@ const ranking = () => {
             <Image
               className="bg-white w-1/5"
               priority
-              src={GreyProfile}
+              src={greyProfile}
               alt=""
             />
             <div className="mt-2 flex flex-col">
@@ -87,7 +87,7 @@ const ranking = () => {
             <Image
               className="bg-white w-1/5"
               priority
-              src={GreyProfile}
+              src={greyProfile}
               alt=""
             />
           </div>
@@ -98,7 +98,7 @@ const ranking = () => {
             <Image
               className="bg-white w-1/5"
               priority
-              src={GreyProfile}
+              src={greyProfile}
               alt=""
             />
             <div className="mt-2 flex flex-col">
