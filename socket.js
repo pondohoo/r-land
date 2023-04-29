@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const URL = "http://localhost:8080";
+const URL = "https://r-land-server-mugqodccoa-uw.a.run.app";
 
 export const socket = io(URL);
 
