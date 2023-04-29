@@ -4,11 +4,12 @@ import CardBack from "../public/CardBack.svg";
 import LeftArrow from "../public/LeftArrow.svg";
 import RightArrow from "../public/RightArrow.svg";
 import Image from "next/image";
+import CollectionToggle from "../components/CollectionToggle";
 
 const collection = () => {
   return (
     <div className="flex flex-col justify-around w-full h-screen bg-rland-darkgray">
-      <div className="left-0 right-0 top-5">Collection toggle</div>
+      <CollectionToggle />
       <div className="flex flex-col">
         <div className="flex justify-center items-center flex-col">
           <p className="text-white font-pirata text-3xl">SPADE 5</p>
