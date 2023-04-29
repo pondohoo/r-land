@@ -5,10 +5,10 @@ import bluryHeart from "../public/bluryheart.svg";
 import glowCube from "../public/glowCube.svg";
 import glowSpade from "../public/glowSpade.svg";
 import patternBar from "../public/Pattern_bar.svg";
-import enterNow from "../public/EnterNow.svg";
 import { motion } from "framer-motion";
+import LoginButton from "./LoginButton";
 
-const startPage = () => {
+const StartPage = () => {
   return (
     <div className=" max-h-screen relative flex bg-black w-screen h-screen flex-col items-center overflow-hidden">
       <Image className=" mt-[13%] z-10" src={usInRLand} />
@@ -20,10 +20,10 @@ const startPage = () => {
       </div>
       <Image className="absolute bottom-3" src={patternBar} />
       <motion.a className="mt-[65%]">
-        <Image className=" opacity-80 scale-95" src={enterNow} />
+        <LoginButton />
       </motion.a>
     </div>
   );
 };
 
-export default startPage;
+export default StartPage;

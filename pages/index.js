@@ -1,10 +1,11 @@
 import React from "react";
 import LoginButton from "../components/LoginButton";
+import StartPage from "../components/StartPage";
 
 const Index = () => {
   return (
     <div>
-      Home
+      <StartPage />
       <LoginButton />
     </div>
   );
