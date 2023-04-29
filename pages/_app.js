@@ -1,5 +1,10 @@
 /* eslint-disable camelcase */
 import { Teko, Pirata_One } from "next/font/google";
+import "../styles/globals.css";
+import Layout from "../components/Layout";
+import UserContext from "../components/UserContext";
+import { useState } from "react";
+
 // eslint-disable-next-line new-cap
 const teko = Teko({
   variable: "--teko-font",
@@ -12,10 +17,6 @@ const pirata = Pirata_One({
   weight: ["400"],
   subsets: ["latin"],
 });
-import "../styles/globals.css";
-import Layout from "../components/Layout";
-import UserContext from "../components/UserContext";
-import { useState } from "react";
 
 export default function App({ Component, pageProps }) {
   const [user, setUser] = useState(null);
