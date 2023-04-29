@@ -3,7 +3,7 @@ import BottomNav from "./BottomNav";
 import TopBar from "./TopBar";
 const Layout = ({ children }) => {
   return (
-    <div className="w-screen h-screen">
+    <div className="flex flex-col justify-between w-screen h-screen">
       <TopBar />
       <main>{children}</main>
       <BottomNav />
