@@ -103,8 +103,8 @@ const collection = () => {
           <p className="m-0 text-rland-red">5 POINTS</p>
         </div>
       </div>
-      <div className="h-1/3">
-        <hr className="mt-10 border-rland-red" />
+      <div className=" h-full">
+        <hr className=" border-rland-red" />
         <div className="bg-gradient-to-b opacity-20 from-rland-red w-screen h-1/3" />
         <div className="flex items-center justify-around">
           <Image priority src={LeftArrow} alt="" />
