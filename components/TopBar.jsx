@@ -1,23 +1,46 @@
-import React from "react";
-import Image from "next/image";
-import Heart from "../public/Heart.svg";
-import Club from "../public/Club.svg";
-import Diamond from "../public/Diamond.svg";
-import Spade from "../public/Spade.svg";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import {
+  BsFillSuitSpadeFill,
+  BsFillSuitHeartFill,
+  BsFillSuitClubFill,
+  BsFillSuitDiamondFill,
+} from "react-icons/bs";
 
 const TopBar = () => {
+  const router = useRouter();
+  const [title, setTitle] = useState(null);
+
+  console.log(router.asPath);
+
+  useEffect(() => {
+    if (router.asPath == "/collection") {
+      setTitle("COLLECTION");
+    } else if (router.asPath == "/ranking") {
+      setTitle("RANKING");
+    } else if (router.asPath == "/chat") {
+      setTitle("CHAT");
+    } else if (router.asPath == "/profile") {
+      setTitle("PROFILE");
+    } else if (router.asPath == "/map") {
+      setTitle("MAP");
+    }
+  });
+
   return (
-    <div className=" flex items-center justify-center bg-rland-black h-12">
-      <div className=" items-center w-full font-pirata flex-row flex justify-evenly">
-        <Image height={20} src={Spade} />
-        <Image height={20} src={Heart} />
-        <p className=" w-1/4 text-center text text-rland-gray text-2xl">
-          Title
-        </p>
-        <Image height={20} src={Club} />
-        <Image height={20} src={Diamond} />
+    title && (
+      <div className=" flex items-center justify-center bg-rland-black h-12">
+        <div className=" items-center w-full font-pirata flex-row flex justify-evenly">
+          <BsFillSuitSpadeFill className="text-white text-xl" />
+          <BsFillSuitHeartFill className="text-rland-red text-xl" />
+          <p className=" w-1/4 text-center text text-rland-gray text-2xl">
+            {title}
+          </p>
+          <BsFillSuitClubFill className="text-white text-xl" />
+          <BsFillSuitDiamondFill className="text-rland-red text-xl" />
+        </div>
       </div>
-    </div>
+    )
   );
 };
 
