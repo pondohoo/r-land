@@ -32,7 +32,7 @@ const BottomNav = () => {
   }, [router.asPath]);
 
   return router.asPath.includes("games") ? (
-    <div className="-mt-2 flex items-center justify-center bg-gradient-to-t from-rland-black from-80% h-12">
+    <div className="-mt-2 flex items-center justify-center bg-gradient-to-t from-black from-80% h-12">
       <div className=" items-center w-full font-pirata flex-row flex justify-evenly">
         <BsFillSuitSpadeFill className="text-white text-xl" />
         <BsFillSuitHeartFill className="text-rland-red text-xl" />
