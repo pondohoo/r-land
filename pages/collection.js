@@ -15,7 +15,6 @@ const cards = [
     toggled: false,
   },
   {
-    id: 3,
     toggled: false,
   },
   {
