@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       animation: {
         "spin-slow": "spin 10s linear infinite",
+        "heart-pulse": " pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;",
         "reverse-spin": "reverse-spin 15s linear infinite",
       },
       keyframes: {
