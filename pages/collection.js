@@ -79,10 +79,10 @@ const collection = () => {
   const [pageState, setPageState] = useState(true);
 
   return pageState ? (
-    <div className="flex flex-col justify-around items-stretch w-full bg-rland-darkgray">
+    <div className="flex flex-col justify-around items-stretch w-full h-full">
       <CollectionToggle setPageState={setPageState} pageState={pageState} />
 
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-3">
         <div className="flex justify-center items-center flex-col">
           <p className="text-white font-pirata text-3xl">SPADE 5</p>
           <p className="text-rland-gray font-teko text-xl">4.22.2023</p>
@@ -114,7 +114,7 @@ const collection = () => {
       </div>
     </div>
   ) : (
-    <div className="flex flex-col justify-start w-full bg-rland-darkgray">
+    <div className="flex flex-col justify-start w-full ">
       <div className="h-5/6 flex flex-col justify-center">
         <CollectionToggle setPageState={setPageState} pageState={pageState} />
         <div className="justify-center items-center gap-0 grid-cols-4 grid">

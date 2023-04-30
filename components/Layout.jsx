@@ -9,9 +9,11 @@ const Layout = ({ children }) => {
   return (
     <div className="flex flex-col justify-between w-screen h-screen bg-rland-black">
       <TopBar />
-      <main>{children}</main>
+      <main className="h-full">{children}</main>
       {router.asPath.includes("games") ? <Chat /> : null}
-      <BottomNav />
+      <div className="pb-10">
+        <BottomNav />
+      </div>
     </div>
   );
 };

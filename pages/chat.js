@@ -11,7 +11,7 @@ const chat = () => {
   return (
     <>
       {inChat ? (
-        <ChatScreen chat={chat} />
+        <ChatScreen setInChat={setInChat} chat={chat} />
       ) : (
         <div>
           {user?.pendingList.map((friend) => {

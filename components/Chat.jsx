@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { socket } from "../socket";
 import UserContext from "../components/UserContext";
 import Image from "next/image";
@@ -10,7 +10,8 @@ const Game = () => {
   const [messages, setMessages] = useState([]);
   const { user } = useContext(UserContext);
 
-  const send = () => {
+  const send = (e) => {
+    e.preventDefault();
     setMessages([
       ...messages,
       { msg: message, name: user.name[0], uid: user.uid },
@@ -20,6 +21,7 @@ const Game = () => {
   };
 
   useEffect(() => {
+    socket.connect();
     socket.emit("join", "RANDOM ROOM ID");
 
     socket.on("games", (msg) => {
@@ -32,11 +34,12 @@ const Game = () => {
     return () => {
       socket.off("games");
       socket.emit("leave", "RANDOM ROOM ID");
+      socket.disconnect();
     };
   }, []);
 
   return (
-    <div className="h-1/2 absolute inset-x-0 bottom-10 flex flex-col justify-end bg-rland-darkgray/30">
+    <div className="mabsolute h-2/5 inset-x-0 bottom-10 flex flex-col justify-end bg-rland-darkgray/30">
       <div className="flex h-5/6 -mb-5 m-5 flex-col flex-none gap-2">
         <ScrollableFeed>
           {messages.map((msg, index) => (
@@ -56,15 +59,17 @@ const Game = () => {
       </div>
 
       <div className="flex mb-10 inset-x-0 justify-center gap-5">
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="w-3/4 bg-rland-darkgray"
-        />
-        <button onClick={send}>
-          <Image src={sendButton} alt="" />
-        </button>
+        <form onSubmit={send}>
+          <input
+            type="text"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className="w-3/4 bg-rland-darkgray"
+          />
+          <button onClick={send}>
+            <Image src={sendButton} alt="" />
+          </button>
+        </form>
       </div>
     </div>
   );

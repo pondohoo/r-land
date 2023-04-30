@@ -3,15 +3,15 @@ import { BsInboxesFill, BsFillXDiamondFill } from "react-icons/bs";
 
 const CollectionToggle = ({ setPageState, pageState }) => {
   return (
-    <div className="bg-rland-darkgray flex font-teko">
+    <div className="h-fit flex font-teko">
       <button
         onClick={() => {
           setPageState(true);
         }}
-        className="w-full flex gap-2 flex-col"
+        className="flex gap-2 flex-col justify-center w-1/2 items-center"
       >
         <div
-          className={`flex h-3/4 items-center justify-center gap-3 ${
+          className={`flex items-center justify-center ${
             pageState ? "text-rland-red" : "text-rland-gray"
           }`}
         >
@@ -30,7 +30,7 @@ const CollectionToggle = ({ setPageState, pageState }) => {
         onClick={() => {
           setPageState(false);
         }}
-        className="w-full flex gap-2 flex-col"
+        className="w-1/2 flex gap-2 flex-col items-center"
       >
         <div
           className={`flex h-3/4 items-center justify-center gap-3 ${
