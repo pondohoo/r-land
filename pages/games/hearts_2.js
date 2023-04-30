@@ -54,7 +54,7 @@ const Hearts = () => {
 
   return (
     <div className=" relative w-screen flex justify-start items-center flex-col">
-      <Timer />
+      <Timer winState={win} timer={1000 * 20} />
       <img className=" left-[15%] top-[21%] absolute" src="/Rectangle 57.svg" />
       <img className=" left-[19%] top-[25%] absolute" src="/Group 59.svg" />
       <p className="mt-[5%] shadow-2xl text-6xl text-center text-rland-red font-pirata">
@@ -75,15 +75,13 @@ const Hearts = () => {
 
         {image && <img src={image} />}
         <div className="left-0 absolute flex justify-evenly top-[85%] w-screen">
-          <button className=" text-white text-4xl" onClick={execute}>
+          <button className=" text-white text-4xl" onClick={() => setImage("")}>
             <BsArrowRepeat />
           </button>
-          <button className=" text-white text-3xl" onClick={() => setImage("")}>
-            <BsFillSendFill />
+          <button className=" text-white text-3xl">
+            <BsFillSendFill onClick={execute} />
           </button>
         </div>
-
-        {win && <p className="text-white">YOU WON</p>}
       </div>
     </div>
   );

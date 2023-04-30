@@ -24,6 +24,7 @@ const pirata = Pirata_One({
 export default function App({ Component, pageProps }) {
   const [user, setUser] = useState(null);
   const [position, setPosition] = useState(null);
+  const [game, setGameContext] = useState(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -54,7 +55,9 @@ export default function App({ Component, pageProps }) {
 
   return (
     position && (
-      <UserContext.Provider value={{ user, setUser, position, setPosition }}>
+      <UserContext.Provider
+        value={{ user, setUser, position, setPosition, game, setGameContext }}
+      >
         <div className={`${teko.variable} ${pirata.variable}`}>
           <Layout>
             <Component {...pageProps} />

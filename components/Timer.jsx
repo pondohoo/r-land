@@ -7,6 +7,12 @@ const Timer = ({ winState, timer }) => {
   const router = useRouter();
 
   useEffect(() => {
+    if (winState) {
+      router.push("/win");
+    }
+  }, [winState]);
+
+  useEffect(() => {
     progress > 0
       ? setTimeout(() => setProgress(progress - 1), timerIncrements)
       : router.push(winState ? "../win" : "../lose");
