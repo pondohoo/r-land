@@ -13,7 +13,7 @@ const PersonalStats = () => {
   return (
     <div className="w-full p-2 px-10 items-center gap-5 bg-rland-darkgray flex">
       <div className="h-full gap-2 flex flex-col items-center justify-center">
-        <div className="bg-[#956787] w-[100px] h-[100px] rounded-full flex items-center justify-center mt-2">
+        <div className="bg-[#3534ee] w-[100px] h-[100px] rounded-full flex items-center justify-center mt-2">
           <p className="font-teko text-7xl text-white p-0">
             {user?.userName[0]}
           </p>
@@ -33,19 +33,43 @@ const PersonalStats = () => {
           <div className="text-white text-2xl mt-3 font-pirata gap-x-8 grid grid-cols-2">
             <div className="flex items-center gap-3">
               <Image className="h-3/4" src={Spade} alt="" />
-              <p>3</p>
+              <p>
+                {user
+                  ? user.cardList.spade
+                    ? Object.keys(user.cardList.spade).length
+                    : 0
+                  : 0}
+              </p>
             </div>
             <div className="flex items-center gap-3">
               <Image className="h-3/4" src={Diamond} alt="" />
-              <p>3</p>
+              <p>
+                {user
+                  ? user.cardList.diamond
+                    ? Object.keys(user.cardList.diamond).length
+                    : 0
+                  : 0}
+              </p>
             </div>
             <div className="flex items-center gap-3">
               <Image className="h-3/4" src={Heart} alt="" />
-              <p>3</p>
+              <p>
+                {user
+                  ? user.cardList.heart
+                    ? Object.keys(user.cardList.heart).length
+                    : 0
+                  : 0}
+              </p>
             </div>
             <div className="flex items-center gap-2">
               <Image className="h-3/4" src={Club} alt="" />
-              <p>3</p>
+              <p>
+                {user
+                  ? user.cardList.club
+                    ? Object.keys(user.cardList.club).length
+                    : 0
+                  : 0}
+              </p>
             </div>
           </div>
         </div>
