@@ -11,13 +11,6 @@ const AddFriends = ({ setAddingFriends }) => {
   const [name, setName] = useState();
   const { user } = useContext(UserContext);
 
-  // const { ref } = useZxing({
-  //   onResult(result) {
-  //     setFriendID(result.getText());
-  //     alert("find");
-  //   },
-  // });
-
   const add = () => {
     axios.post("/api/addFriend", {
       friend: friendID,
@@ -29,20 +22,11 @@ const AddFriends = ({ setAddingFriends }) => {
 
   return (
     <div>
-      <input
-        className="border-black border-2 text-black"
-        value={friendID}
-        onChange={(e) => {
-          setFriendID(e.target.value);
-        }}
-      />
-      <input
-        type="text"
-        onChange={(e) => setName(e.target.value)}
-        value={name}
-      />
       <QrScanner
-        onDecode={(result) => console.log(result)}
+        onDecode={(result) => {
+          setFriendID(result.split("_")[0]);
+          setName(result.split("_")[1]);
+        }}
         onError={(error) => console.log(error?.message)}
       />
       <QRCode
@@ -51,7 +35,7 @@ const AddFriends = ({ setAddingFriends }) => {
         value={user.uid}
         viewBox={`0 0 256 256`}
       />
-      <span className="text-white">{friendID}</span>
+      <span className="text-white">{friendID + "_" + user.name}</span>
       <button onClick={add}>Add Friends</button>
     </div>
   );
