@@ -32,67 +32,67 @@ const BottomNav = () => {
   }, [router.asPath]);
 
   return router.asPath.includes("games") ||
-		router.asPath.includes("win") ||
-		router.asPath.includes("lose") ? (
-		<div className="-mt-2 flex items-center justify-center bg-gradient-to-t from-black from-80% h-12">
-			<div className=" items-center w-full font-pirata flex-row flex justify-evenly">
-				<BsFillSuitSpadeFill className="text-white text-xl" />
-				<BsFillSuitHeartFill className="text-rland-red text-xl" />
-				<BsFillSuitClubFill className="text-white text-xl" />
-				<BsFillSuitDiamondFill className="text-rland-red text-xl" />
-				<BsFillSuitSpadeFill className="text-white text-xl" />
-				<BsFillSuitHeartFill className="text-rland-red text-xl" />
-				<BsFillSuitClubFill className="text-white text-xl" />
-				<BsFillSuitDiamondFill className="text-rland-red text-xl" />
-			</div>
-		</div>
-	) : (
-		visible && (
-			<div className="z-10 fixed bottom-0 w-full">
-				<div className="w-full flex justify-center items-center animate-heart-pulse">
-					<Link href="/map">
-						<FiMapPin className="map bg-rland-red text-rland-black z-100 text-6xl p-2  rounded-full -mb-10 " />
-					</Link>
-				</div>
-				<div className="bg-black py-5 flex justify-around">
-					<div className="flex w-1/2 gap-1 justify-evenly">
-						<Link href="/collection">
-							<BsFillXDiamondFill
-								className={`text-2xl ${
-									visible === "collection"
-										? "text-rland-red"
-										: "text-rland-gray"
-								}`}
-							/>
-						</Link>
-						<Link href="/ranking">
-							<AiFillTrophy
-								className={`text-2xl ${
-									visible === "ranking" ? "text-rland-red" : "text-rland-gray"
-								}`}
-							/>
-						</Link>
-					</div>
-					<div className="flex w-1/2 gap-1 justify-evenly">
-						<Link href="/chat">
-							<BsChatLeftTextFill
-								className={`text-2xl ${
-									visible === "chat" ? "text-rland-red" : "text-rland-gray"
-								}`}
-							/>
-						</Link>
-						<Link href="/profile">
-							<CgProfile
-								className={`text-2xl ${
-									visible === "profile" ? "text-rland-red" : "text-rland-gray"
-								}`}
-							/>
-						</Link>
-					</div>
-				</div>
-			</div>
-		)
-	);
+    router.asPath.includes("win") ||
+    router.asPath.includes("lose") ? (
+    <div className="-mt-2 flex items-center justify-center bg-gradient-to-t from-black from-80% h-12">
+      <div className=" items-center w-full font-pirata flex-row flex justify-evenly">
+        <BsFillSuitSpadeFill className="text-white text-xl" />
+        <BsFillSuitHeartFill className="text-rland-red text-xl" />
+        <BsFillSuitClubFill className="text-white text-xl" />
+        <BsFillSuitDiamondFill className="text-rland-red text-xl" />
+        <BsFillSuitSpadeFill className="text-white text-xl" />
+        <BsFillSuitHeartFill className="text-rland-red text-xl" />
+        <BsFillSuitClubFill className="text-white text-xl" />
+        <BsFillSuitDiamondFill className="text-rland-red text-xl" />
+      </div>
+    </div>
+  ) : (
+    visible && (
+      <div className="z-10 fixed bottom-0 w-full">
+        <div className="w-full flex justify-center items-center animate-heart-pulse">
+          <Link href="/map">
+            <FiMapPin className="map bg-rland-red text-rland-black z-100 text-6xl p-2  rounded-full -mb-10 " />
+          </Link>
+        </div>
+        <div className="bg-black py-5 flex justify-around">
+          <div className="flex w-1/2 gap-1 justify-evenly">
+            <Link href="/collection">
+              <BsFillXDiamondFill
+                className={`text-2xl ${
+                  visible === "collection"
+                    ? "text-rland-red"
+                    : "text-rland-gray"
+                }`}
+              />
+            </Link>
+            <Link href="/ranking">
+              <AiFillTrophy
+                className={`text-2xl ${
+                  visible === "ranking" ? "text-rland-red" : "text-rland-gray"
+                }`}
+              />
+            </Link>
+          </div>
+          <div className="flex w-1/2 gap-1 justify-evenly">
+            <Link href="/chat">
+              <BsChatLeftTextFill
+                className={`text-2xl ${
+                  visible === "chat" ? "text-rland-red" : "text-rland-gray"
+                }`}
+              />
+            </Link>
+            <Link href="/profile">
+              <CgProfile
+                className={`text-2xl ${
+                  visible === "profile" ? "text-rland-red" : "text-rland-gray"
+                }`}
+              />
+            </Link>
+          </div>
+        </div>
+      </div>
+    )
+  );
 };
 
 export default BottomNav;
