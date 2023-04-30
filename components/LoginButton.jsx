@@ -24,6 +24,7 @@ const LoginButton = () => {
         uid: user.uid,
         joinTime: Timestamp.now(),
         friendList: [],
+        pendingList: [],
         cardList: [],
       });
       setUser({
