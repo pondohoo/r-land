@@ -18,7 +18,7 @@ import Link from "next/link";
 const Map = () => {
   const { position } = useContext(UserContext);
   const [games, setGames] = useState([]);
-  const [valid, setValid] = useState(0);
+  const [valid, setValid] = useState(1);
   const [game, setGame] = useState({});
 
   const { isLoaded } = useJsApiLoader({
@@ -70,10 +70,9 @@ const Map = () => {
         <div className="absolute top-0 left-0">
           <div className="mt-12 bg-rland-black text-white flex justify-center items-center flex-col text-xl p-2">
             <p className="font-teko">
+              {valid === 0 && "you are not within game range"}
               {valid === 1 && "there are no games nearby"}
-              {valid === 2
-                ? "you are within game range"
-                : "you are not within game range"}
+              {valid === 2 && "you are within game range"}
             </p>
             <Link
               href={`/games/${game.card}`}
