@@ -46,10 +46,10 @@ const BottomNav = () => {
     </div>
   ) : (
     visible && (
-      <div className="z-10">
+      <div className="z-10 fixed bottom-0 w-full">
         <div className="w-full flex justify-center items-center animate-heart-pulse">
           <Link href="/map">
-            <FiMapPin className="map bg-rland-red text-rland-black z-100 text-6xl p-2  rounded-full -mb-10" />
+            <FiMapPin className="map bg-rland-red text-rland-black z-100 text-6xl p-2  rounded-full -mb-10 " />
           </Link>
         </div>
         <div className="bg-black py-5 flex justify-around">

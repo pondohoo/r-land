@@ -22,7 +22,8 @@ const addNewFriend = () => {
     await axios.post("/api/addFriend", {
       friend: friendID,
       user: user.uid,
-      name: friendName,
+      name1: friendName,
+      name2: user.userName,
     });
     alert("Friend request sent to " + friendName);
     router.push("/profile");
