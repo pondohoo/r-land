@@ -9,7 +9,7 @@ const win = () => {
       <p className="mt-[10%] text-white font-pirata text-7xl">FAILURE</p>
       <p className="mb-[10%] text-rland-red font-teko text-2xl">-3 points</p>
       <motion.div
-        className="z-10 absolute top-[15%]"
+        className="z-10 absolute top-[35%]"
         initial={{ opacity: 1, scale: 2 }}
         animate={{ opacity: 0 }}
         transition={{ duration: 5 }}
