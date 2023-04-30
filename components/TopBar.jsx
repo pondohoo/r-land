@@ -40,7 +40,7 @@ const TopBar = () => {
     </div>
   ) : (
     title && (
-      <div className=" flex items-center justify-center bg-rland-black h-12">
+      <div className=" flex items-center justify-center bg-rland-black h-12 z-10">
         <div className=" items-center w-full font-pirata flex-row flex justify-evenly">
           <BsFillSuitSpadeFill className="text-white text-xl" />
           <BsFillSuitHeartFill className="text-rland-red text-xl" />

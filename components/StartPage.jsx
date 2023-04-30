@@ -12,16 +12,21 @@ const StartPage = () => {
   return (
     <div className=" max-h-screen relative flex bg-black w-screen h-screen flex-col items-center overflow-hidden">
       <Image className=" mt-[13%] z-10" src={usInRLand} />
-      <Image className=" top-[15%] z-0 absolute max-w-lg" src={bluryHeart} />
       <div className=" h-1/6 w-1/3 mt-[30%] z-10 justify-evenly flex flex-row">
         <Image src={glowCube} />
         <Image src={glowSpade} />
         <Image src={glowCube} />
       </div>
       <Image className="absolute bottom-3" src={patternBar} />
-      <motion.a className="mt-[65%]">
-        <LoginButton />
-      </motion.a>
+      <div className="flex justify-center animate-heart-pulse">
+        <Image className=" top-[15%] z-0 absolute max-w-lg" src={bluryHeart} />
+        <motion.a
+          whileTap={{ opacity: 0.2, scale: 1 }}
+          className=" duration-300   mt-[130%]"
+        >
+          <LoginButton />
+        </motion.a>
+      </div>
     </div>
   );
 };
