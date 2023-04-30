@@ -40,34 +40,34 @@ const Game = () => {
 
   return (
     user && (
-      <div className="mabsolute h-3/5 inset-x-0 bottom-10 flex flex-col justify-end bg-rland-darkgray/30">
-        <div className="flex h-5/6 -mb-10 m-5 flex-col flex-none gap-2">
-          <ScrollableFeed>
+      <div className="mb-20 h-1/3 w-full left-0 bottom-24 flex flex-col justify-end bg-rland-darkgray/30">
+        <div className="flex h-full flex-col items-end w-full justify-start">
+          <ScrollableFeed className=" w-full flex h-full flex-col items-end justify-start">
             {messages.map((msg, index) => (
               <div
                 key={index}
-                className="flex flex-none break-words items-center gap-1 text-white text-xl font-teko font-thin"
+                className="ml-5 w-11/12 flex flex-none break-words items-center text-white text-xl font-teko font-thin "
               >
                 {user.uid == msg.uid ? (
                   <div className="bg-rland-red h-5 w-1" />
                 ) : (
                   <div className="bg-rland-gray h-5 w-1" />
                 )}
-                <p className="">{msg.msg}</p>
+                <p className="text-lg ml-2">{msg.msg}</p>
               </div>
             ))}
           </ScrollableFeed>
         </div>
 
         <form
-          className="flex mb-10 inset-x-0 items-center justify-center gap-5"
+          className="w-full flex -mb-12 items-center justify-center gap-5 fixed "
           onSubmit={send}
         >
           <input
             type="text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="h-full bg-rland-darkgray"
+            className="p-2 w-9/12 h-full bg-rland-darkgray text-white"
           />
           <button onClick={send}>
             <Image src={sendButton} alt="" />

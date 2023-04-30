@@ -11,12 +11,12 @@ const Game = () => {
     console.log(count);
   };
   return (
-    <div className="h-full flex justify-center">
+    <div className="h-1/2 flex justify-center">
       <Timer timer={1000 * 20} winState={false} />
       <motion.button
         whileTap={{ scale: 0.8 }}
         onClick={handleClick}
-        className="mt-10 w-9/12"
+        className="mt-10 w-1/2"
       >
         <Image className="w-screen" src={TapCard} alt="" />
       </motion.button>

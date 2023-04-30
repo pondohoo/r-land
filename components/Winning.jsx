@@ -5,9 +5,12 @@ import { motion } from "framer-motion";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { useRouter } from "next/router";
 import axios from "axios";
+import UserContext from "./UserContext";
+import { useContext } from "react";
 
 const Winning = ({ pattern, number, points, time, lat, long }) => {
   const router = useRouter();
+  const { user } = useContext(UserContext);
   const back = async () => {
     await axios.post("/api/addCard", {
       card: { pattern },
@@ -16,6 +19,7 @@ const Winning = ({ pattern, number, points, time, lat, long }) => {
       points: { points },
       lat: { lat },
       long: { long },
+      uid: user.uid,
     });
     router.push("/collection");
   };

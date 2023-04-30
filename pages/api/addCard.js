@@ -2,6 +2,7 @@ import { db } from "../../firebase";
 import { updateDoc, doc } from "firebase/firestore";
 
 export default async function handler(req, res) {
+  console.log(req.body);
   updateDoc(doc(db, "users", req.body.uid), {
     cardList: {
       [req.body.card]: {
