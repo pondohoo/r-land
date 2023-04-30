@@ -3,7 +3,6 @@ import TapCard from "../../public/TapCard.svg";
 import { useState } from "react";
 import Timer from "../../components/Timer";
 
-
 const Game = () => {
   const [count, setCount] = useState(0);
   const handleClick = () => {
