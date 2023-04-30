@@ -6,13 +6,17 @@ export default async function handler(req, res) {
     req.body.user > req.body.friend
       ? req.body.user + "_" + req.body.friend
       : req.body.friend + "_" + req.body.user;
-  await setDoc(doc(db, "friends", code), {
+  setDoc(doc(db, "friends", code), {
     friend: req.body.friend,
     user: req.body.user,
-    name1: req.body.friendname,
-    name2: req.body.name,
+    name1: req.body.name1,
+    name2: req.body.name2,
     status: false,
-  });
-
-  res.status(200).json();
+  })
+    .then(() => {
+      res.status(200).json();
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 }

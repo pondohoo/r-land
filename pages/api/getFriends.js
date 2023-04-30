@@ -1,13 +1,15 @@
 import { db } from "../../firebase";
-import { collection, where, query, getDocs } from "firebase/firestore";
+import { collection, where, query, getDocs, or, and } from "firebase/firestore";
 
 export default async function handler(req, res) {
   const output = [];
 
   const q = await query(
     collection(db, "friends"),
-    (where("user", "==", req.body.friend), where("status", "==", true)),
-    or(where("friend", "==", req.body.friend), where("status", "==", true))
+    and(
+      where("status", "==", true),
+      or(where("user", "==", req.body.uid), where("friend", "==", req.body.uid))
+    )
   );
   const Docs = await getDocs(q).catch((error) => {
     console.log(error);

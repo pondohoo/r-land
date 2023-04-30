@@ -19,7 +19,7 @@ const chat = () => {
           setFriendRequests(res.data);
         });
 
-      axios.post("/api/getFriends", { friend: user.uid }).then((res) => {
+      axios.post("/api/getFriends", { uid: user.uid }).then((res) => {
         setFriends(res.data);
       });
     }
@@ -32,13 +32,16 @@ const chat = () => {
         <div>
           {friendRequests &&
             friendRequests.map((friend, index) => {
-              return <FriendRequest key={index} friend={friend} />;
+              return (
+                <FriendRequest index={index} key={index} friend={friend} />
+              );
             })}
           {friends &&
             friends.map((friend, index) => {
               return (
                 <Friend
                   key={index}
+                  index={index}
                   friend={friend}
                   setChat={setChat}
                   setInChat={setInChat}

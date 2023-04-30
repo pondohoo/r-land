@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import UserContext from "./UserContext";
 import { useContext, useEffect } from "react";
 
-const Friend = ({ friend, setChat, setInChat, key }) => {
+const Friend = ({ friend, setChat, setInChat, index }) => {
   const { user } = useContext(UserContext);
   const [friendName, setFriendName] = useState("");
   const gotoChat = () => {
-    // const chatID =
-    //   friend.friendID > user.uid
-    //     ? friend.friendID + "-" + user.uid
-    //     : user.uid + "-" + friend.friendID;
-    // setChat(chatID);
-    // setInChat(true);
+    const chatID =
+      friend.friend > friend.user
+        ? friend.friend + "_" + friend.user
+        : friend.user + "_" + friend.friend;
+    setChat(chatID);
+    setInChat(true);
   };
   useEffect(() => {
     if (friend.name1 == user.userName) setFriendName(friend.name2);
@@ -20,7 +20,7 @@ const Friend = ({ friend, setChat, setInChat, key }) => {
   return (
     <div
       className={`flex flex-col items-center justify-center w-full ${
-        key % 2 == 0 && "bg-[#282D30]"
+        index % 2 == 0 && "bg-[#282D30]"
       }`}
     >
       <button onClick={gotoChat} className="flex flex-row w-10/12 items-center">
