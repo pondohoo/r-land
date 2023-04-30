@@ -26,7 +26,7 @@ const BottomNav = () => {
 
   return (
     visible && (
-      <div className="">
+      <div className="z-10">
         <div className="w-full flex justify-center items-center">
           <Link href="/map">
             <FiMapPin
