@@ -22,7 +22,9 @@ const Winning = ({ pattern, number, points, time, lat, long }) => {
   return (
     <div className=" items-center flex-col flex h-screen w-screen relative">
       <p className="mt-[10%] text-white font-pirata text-7xl">Acquire</p>
-      <p className="m-2] text-white font-pirata text-5xl">{card}</p>
+      <p className="m-2] text-white font-pirata text-5xl">
+        {pattern + " " + number}
+      </p>
       <p className="mb-[10%] text-rland-red font-teko text-3xl">
         {points + " points"}
       </p>
