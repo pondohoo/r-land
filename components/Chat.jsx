@@ -40,8 +40,8 @@ const Game = () => {
 
   return (
     user && (
-      <div className="mabsolute h-2/5 inset-x-0 bottom-10 flex flex-col justify-end bg-rland-darkgray/30">
-        <div className="flex h-5/6 -mb-5 m-5 flex-col flex-none gap-2">
+      <div className="mabsolute h-3/5 inset-x-0 bottom-10 flex flex-col justify-end bg-rland-darkgray/30">
+        <div className="flex h-5/6 -mb-10 m-5 flex-col flex-none gap-2">
           <ScrollableFeed>
             {messages.map((msg, index) => (
               <div
@@ -59,19 +59,20 @@ const Game = () => {
           </ScrollableFeed>
         </div>
 
-        <div className="flex mb-10 inset-x-0 justify-center gap-5">
-          <form onSubmit={send}>
-            <input
-              type="text"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="w-3/4 bg-rland-darkgray"
-            />
-            <button onClick={send}>
-              <Image src={sendButton} alt="" />
-            </button>
-          </form>
-        </div>
+        <form
+          className="flex mb-10 inset-x-0 items-center justify-center gap-5"
+          onSubmit={send}
+        >
+          <input
+            type="text"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className="h-full bg-rland-darkgray"
+          />
+          <button onClick={send}>
+            <Image src={sendButton} alt="" />
+          </button>
+        </form>
       </div>
     )
   );
