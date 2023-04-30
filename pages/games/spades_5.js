@@ -12,7 +12,7 @@ const Game = () => {
   };
   return (
     <div className="h-full flex justify-center">
-      <Timer timer={1000 * 20} winState={true} />
+      <Timer timer={1000 * 20} winState={false} />
       <motion.button
         whileTap={{ scale: 0.8 }}
         onClick={handleClick}
