@@ -32,10 +32,10 @@ const ChatScreen = ({ chat, setInChat }) => {
     return () => unsubscribe();
   }, []);
   return (
-    <div className="h-full bg-transparent">
-      <div className=" bg-transparent text-white flex flex-col items-end h-[85%] mt-12">
-        <ScrollableFeed>
-          <div className=" flex flex-col justify-end items-center">
+    <div className="h-full bg-transparent w-full">
+      <div className="w-full bg-transparent text-white flex flex-col items-end h-[85%] mt-12">
+        <ScrollableFeed className="w-full">
+          <div className="w-full flex flex-col justify-end items-center">
             {messages &&
               messages.map((message, index) => {
                 console.log(message);

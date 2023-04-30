@@ -10,7 +10,9 @@ const FriendRequest = ({ friend, index }) => {
       user.uid > friend.user
         ? user.uid + "_" + friend.user
         : friend.user + "_" + user.uid;
-    axios.post("/api/confirmFriend", { friendID: code });
+    axios.post("/api/confirmFriend", { friendID: code }).then(() => {
+      window.location.reload(false);
+    });
   };
   return (
     <div
@@ -22,10 +24,10 @@ const FriendRequest = ({ friend, index }) => {
         <div className="flex flex-row justify-center items-center">
           <div className="bg-[#956787] w-[50px] h-[50px] rounded-full flex items-center justify-center ">
             <p className="font-teko text-5xl text-white p-0">
-              {friend.name1[0]}
+              {friend.name2[0]}
             </p>
           </div>
-          <p className="text-white text-2xl font-teko ml-5">{friend.name1}</p>
+          <p className="text-white text-2xl font-teko ml-5">{friend.name2}</p>
         </div>
         <button
           className="text-white bg-rland-red py-1 px-4 font-teko text-xl"
