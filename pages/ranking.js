@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import greyProfile from "../public/greyProfile.svg";
 import ranking1 from "../public/ranking1.svg";
 import ranking2 from "../public/ranking2.svg";
 import ranking3 from "../public/ranking3.svg";
@@ -24,12 +23,11 @@ const ranking = () => {
         {rankingList?.length > 0 && (
           <div className="relative">
             <div className="absolute w-3/4 h-full gap-8 flex justify-center items-center">
-              <Image
-                className="bg-white w-1/5"
-                priority
-                src={greyProfile}
-                alt=""
-              />
+              <div className="bg-white w-[70px] h-[70px] flex items-center justify-center">
+                <p className="font-teko text-6xl text-center text-rland-darkgray p-0">
+                  {rankingList[0].userName[0]}
+                </p>
+              </div>
               <div className="mt-2 flex flex-col">
                 <p className="font-pirata text-3xl text-white">JOKER</p>
                 <div className="flex gap-2">
@@ -59,12 +57,11 @@ const ranking = () => {
                   </p>
                 </div>
               </div>
-              <Image
-                className="bg-white w-1/5"
-                priority
-                src={greyProfile}
-                alt=""
-              />
+              <div className="bg-white w-[70px] h-[70px] flex items-center justify-center">
+                <p className="font-teko text-6xl text-center text-rland-darkgray p-0">
+                  {rankingList[1].userName[0]}
+                </p>
+              </div>
             </div>
             <Image priority className="w-screen h-auto" src={ranking2} alt="" />
           </div>
@@ -72,12 +69,11 @@ const ranking = () => {
         {rankingList?.length > 2 && (
           <div className="relative">
             <div className="absolute w-3/4 h-full gap-8 flex justify-center items-center">
-              <Image
-                className="bg-white w-1/5"
-                priority
-                src={greyProfile}
-                alt=""
-              />
+              <div className="bg-white w-[70px] h-[70px] flex items-center justify-center">
+                <p className="font-teko text-6xl text-center text-rland-darkgray p-0">
+                  {rankingList[2].userName[0]}
+                </p>
+              </div>
               <div className="mt-2 flex flex-col">
                 <p className="font-pirata text-3xl text-white">QUEEN</p>
                 <div className="flex gap-2">
@@ -107,12 +103,11 @@ const ranking = () => {
                   </p>
                 </div>
               </div>
-              <Image
-                className="bg-white w-1/5"
-                priority
-                src={greyProfile}
-                alt=""
-              />
+              <div className="bg-white w-[70px] h-[70px] flex items-center justify-center">
+                <p className="font-teko text-6xl text-center text-rland-darkgray p-0">
+                  {rankingList[2].userName[0]}
+                </p>
+              </div>
             </div>
             <Image priority className="w-screen h-auto" src={ranking4} alt="" />
           </div>
@@ -120,12 +115,11 @@ const ranking = () => {
         {rankingList?.length > 4 && (
           <div className="relative">
             <div className="absolute w-3/4 h-full gap-8 flex justify-center items-center">
-              <Image
-                className="bg-white w-1/5"
-                priority
-                src={greyProfile}
-                alt=""
-              />
+              <div className="bg-white w-[70px] h-[70px] flex items-center justify-center">
+                <p className="font-teko text-6xl text-center text-rland-darkgray p-0">
+                  {rankingList[4].userName[0]}
+                </p>
+              </div>
               <div className="mt-2 flex flex-col">
                 <p className="font-pirata text-3xl text-white">JACK</p>
                 <div className="flex gap-2">

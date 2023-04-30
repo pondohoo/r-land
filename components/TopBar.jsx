@@ -25,7 +25,9 @@ const TopBar = () => {
     }
   }, [router.asPath]);
 
-  return router.asPath.includes("games") ? (
+  return router.asPath.includes("games") ||
+    router.asPath.includes("win") ||
+    router.asPath.includes("lose") ? (
     <div className=" flex items-center justify-center bg-rland-black h-12">
       <div className=" items-center w-full font-pirata flex-row flex justify-evenly">
         <BsFillSuitSpadeFill className="text-white text-xl" />

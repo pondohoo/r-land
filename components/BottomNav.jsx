@@ -31,7 +31,9 @@ const BottomNav = () => {
     }
   }, [router.asPath]);
 
-  return router.asPath.includes("games") ? (
+  return router.asPath.includes("games") ||
+    router.asPath.includes("win") ||
+    router.asPath.includes("lose") ? (
     <div className="-mt-2 flex items-center justify-center bg-gradient-to-t from-black from-80% h-12">
       <div className=" items-center w-full font-pirata flex-row flex justify-evenly">
         <BsFillSuitSpadeFill className="text-white text-xl" />
