@@ -11,9 +11,8 @@ const Layout = ({ children }) => {
       <TopBar />
       <main className="h-full">{children}</main>
       {router.asPath.includes("games") ? <Chat /> : null}
-      
-        <BottomNav />
-      
+
+      <BottomNav />
     </div>
   );
 };
