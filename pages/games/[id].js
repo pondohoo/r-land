@@ -11,9 +11,12 @@ const Game = () => {
   const { user } = useContext(UserContext);
 
   const send = () => {
-    setMessages([...messages, { msg: message, name: user.name[0] }]);
+    setMessages([
+      ...messages,
+      { msg: message, name: user.name[0], uid: user.uid },
+    ]);
     setMessage("");
-    socket.emit("games", { msg: message, name: user.name[0] });
+    socket.emit("games", { msg: message, name: user.name[0], uid: user.uid });
   };
 
   const tap = () => {
@@ -27,7 +30,7 @@ const Game = () => {
     socket.on("games", (msg) => {
       setMessages((messages) => [
         ...messages,
-        { name: msg.name[0], msg: msg.msg },
+        { name: msg.name[0], msg: msg.msg, uid: msg.uid },
       ]);
     });
 
