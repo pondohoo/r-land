@@ -5,10 +5,6 @@ import LeftArrow from "../public/LeftArrow.svg";
 import RightArrow from "../public/RightArrow.svg";
 import Image from "next/image";
 import CollectionToggle from "../components/CollectionToggle";
-import Heart from "../public/Heart.svg";
-import Club from "../public/Club.svg";
-import Diamond from "../public/Diamond.svg";
-import Spade from "../public/Spade.svg";
 import CardDim from "../public/CardDim.svg";
 
 // array of cards
@@ -83,10 +79,8 @@ const collection = () => {
   const [pageState, setPageState] = useState(true);
 
   return pageState ? (
-    <div className="flex flex-col justify-around w-full h-screen bg-rland-darkgray">
-      <div>
-        <CollectionToggle setPageState={setPageState} />
-      </div>
+    <div className="flex flex-col justify-around items-stretch w-full bg-rland-darkgray">
+      <CollectionToggle setPageState={setPageState} pageState={pageState} />
 
       <div className="flex flex-col">
         <div className="flex justify-center items-center flex-col">
@@ -120,15 +114,9 @@ const collection = () => {
       </div>
     </div>
   ) : (
-    <div className="flex flex-col w-full h-screen bg-rland-darkgray">
+    <div className="flex flex-col justify-start w-full bg-rland-darkgray">
       <div className="h-5/6 flex flex-col justify-center">
-        <CollectionToggle setPageState={setPageState} />
-        <div className="mx-5 mb-5 flex justify-between">
-          <Image src={Spade} alt="" />
-          <Image src={Heart} alt="" />
-          <Image src={Club} alt="" />
-          <Image src={Diamond} alt="" />
-        </div>
+        <CollectionToggle setPageState={setPageState} pageState={pageState} />
         <div className="justify-center items-center gap-0 grid-cols-4 grid">
           {cards.map((card) => {
             return card.toggled ? (
