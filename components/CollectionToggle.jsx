@@ -3,7 +3,7 @@ import { BsInboxesFill, BsFillXDiamondFill } from "react-icons/bs";
 
 const CollectionToggle = ({ setPageState, pageState }) => {
   return (
-    <div className="h-fit flex font-teko">
+    <div className="h-[30px] flex font-teko">
       <button
         onClick={() => {
           setPageState(true);

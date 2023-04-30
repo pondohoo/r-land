@@ -19,12 +19,22 @@ const Friend = ({ friend, setChat, setInChat, index }) => {
   }, []);
   return (
     <div
-      className={`flex flex-col items-center justify-center w-full ${
+      className={`flex flex-col items-center justify-center w-full m-2 ${
         index % 2 == 0 && "bg-[#282D30]"
       }`}
     >
       <button onClick={gotoChat} className="flex flex-row w-10/12 items-center">
-        <div className="bg-[#956787] w-[70px] h-[70px] rounded-full flex items-center justify-center mr-5">
+        <div
+          className={`${
+            index % 4 == 0
+              ? "bg-[#956787]"
+              : index % 4 == 1
+              ? "bg-[#50beca]"
+              : index % 4 == 2
+              ? "bg-[#53c55d]"
+              : "bg-[#c66086]"
+          } w-[50px] h-[50px] rounded-full my-4 flex items-center justify-center mr-5`}
+        >
           <p className="font-teko text-5xl text-white">{friendName[0]}</p>
         </div>
         <div>

@@ -3,7 +3,9 @@ import Card from "../public/Card.svg";
 import Image from "next/image";
 import CollectionToggle from "../components/CollectionToggle";
 import CardDim from "../public/CardDim.svg";
-import CardsFlip from "../components/CardsFlip";
+import CardFlip from "../components/CardFlip";
+import UserContext from "../components/UserContext";
+import { useContext } from "react";
 // array of cards
 const cards = [
   {
@@ -73,24 +75,89 @@ const cards = [
 
 const collection = () => {
   const [pageState, setPageState] = useState(true);
+  const { user } = useContext(UserContext);
+  // console.log(user?.cardList.spade);
 
   return pageState ? (
-    <div className="flex flex-col justify-around items-stretch w-full h-full">
+    <div className=" flex flex-col justify-between w-full h-full">
       <CollectionToggle setPageState={setPageState} pageState={pageState} />
 
-      <div className="flex flex-col my-10">
-        <div className="flex justify-center items-center flex-col">
-          <p className="text-white font-pirata text-3xl">SPADE 5</p>
-          <p className="text-rland-gray font-teko text-xl">4.22.2023</p>
+      <div className="flex flex-col  h-auto">
+        <div className=" flex overflow-scroll">
+          {user &&
+            user.cardList.spade &&
+            Object.entries(user?.cardList.spade).map((card, index) => {
+              console.log(card);
+              return (
+                <CardFlip
+                  pattern="spade"
+                  key={index}
+                  lat={card[1].lat}
+                  long={card[1].long}
+                  points={card[1].points}
+                  time={card[1].time}
+                  number={card[0]}
+                />
+              );
+            })}
+          {user &&
+            user.cardList.heart &&
+            Object.entries(user?.cardList.heart).map((card, index) => {
+              console.log(card);
+              return (
+                <CardFlip
+                  pattern="heart"
+                  key={index}
+                  lat={card[1].lat}
+                  long={card[1].long}
+                  points={card[1].points}
+                  time={card[1].time}
+                  number={card[0]}
+                />
+              );
+            })}
+          {user &&
+            user.cardList.club &&
+            Object.entries(user?.cardList.club).map((card, index) => {
+              console.log(card);
+              return (
+                <CardFlip
+                  pattern="club"
+                  key={index}
+                  lat={card[1].lat}
+                  long={card[1].long}
+                  points={card[1].points}
+                  time={card[1].time}
+                  number={card[0]}
+                />
+              );
+            })}
+          {user &&
+            user.cardList.diamond &&
+            Object.entries(user?.cardList.diamond).map((card, index) => {
+              console.log(card);
+              return (
+                <CardFlip
+                  pattern="diamond"
+                  key={index}
+                  lat={card[1].lat}
+                  long={card[1].long}
+                  points={card[1].points}
+                  time={card[1].time}
+                  number={card[0]}
+                />
+              );
+            })}
         </div>
-        <CardsFlip />
       </div>
-      <div className=" h-full">
+      <div className="h-1/3">
         <hr className=" border-rland-red" />
-        <div className="bg-gradient-to-b opacity-20 from-rland-red w-screen h-1/5" />
-        <div className="flex items-center justify-around">
-          <p className="text-rland-red font-teko text-4xl">25 points</p>
-        </div>
+        <div className="h-[60px] bg-gradient-to-b opacity-20 from-rland-red to-transparent w-screen "></div>
+        {user && (
+          <p className="text-rland-red font-teko text-4xl  w-full text-center">
+            {user.score} points
+          </p>
+        )}
       </div>
     </div>
   ) : (
