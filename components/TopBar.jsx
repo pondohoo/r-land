@@ -23,7 +23,7 @@ const TopBar = () => {
     } else if (router.asPath === "/map") {
       setTitle("MAP");
     }
-  }, []);
+  }, [router.asPath]);
 
   return (
     title && (

@@ -27,9 +27,17 @@ const BottomNav = () => {
   return (
     visible && (
       <div className="">
-        <Link href="/map">
-          <FiMapPin className="text-rland-black mx-auto -my-7 bg-red-500 z-10" />
-        </Link>
+        <div className="w-full flex justify-center items-center">
+          <Link href="/map">
+            <FiMapPin
+              className={`${
+                visible === "map"
+                  ? "bg-rland-red text-rland-black"
+                  : "text-rland-gray"
+              }  z-100 text-6xl p-2  rounded-full -mb-10`}
+            />
+          </Link>
+        </div>
         <div className="bg-rland-black py-5 flex justify-around">
           <div className="flex w-1/2 gap-1 justify-evenly">
             <Link href="/collection">
