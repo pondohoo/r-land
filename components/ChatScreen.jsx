@@ -10,7 +10,7 @@ import { db } from "../firebase";
 import UserContext from "./UserContext";
 import Message from "./Message";
 
-const ChatScreen = ({ chat }) => {
+const ChatScreen = ({ chat, setInChat }) => {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const { user } = useContext(UserContext);
@@ -32,7 +32,13 @@ const ChatScreen = ({ chat }) => {
   }, []);
   return (
     <div className="text-white">
-      chatScreen
+      <button
+        onClick={() => {
+          setInChat(false);
+        }}
+      >
+        back
+      </button>
       {messages &&
         messages.map((message, index) => {
           console.log(message);

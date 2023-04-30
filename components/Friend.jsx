@@ -20,7 +20,9 @@ const Friend = ({ friend, setChat, setInChat, key }) => {
     >
       <button onClick={gotoChat} className="flex flex-row w-10/12 items-center">
         <div className="bg-[#956787] w-[70px] h-[70px] rounded-full flex items-center justify-center mr-5">
-          <p className="font-teko text-5xl text-white">{user.userName[0]}</p>
+          <p className="font-teko text-5xl text-white">
+            {friend.friendName[0]}
+          </p>
         </div>
         <div>
           <p className="text-white text-2xl font-teko">{friend.friendName}</p>
