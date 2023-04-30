@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import {
-	BsFillSuitSpadeFill,
-	BsFillSuitHeartFill,
-	BsFillSuitClubFill,
-	BsFillSuitDiamondFill,
-	BsFillXDiamondFill,
-	BsChatLeftTextFill,
+  BsFillSuitSpadeFill,
+  BsFillSuitHeartFill,
+  BsFillSuitClubFill,
+  BsFillSuitDiamondFill,
+  BsFillXDiamondFill,
+  BsChatLeftTextFill,
 } from "react-icons/bs";
 import { AiFillTrophy } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
