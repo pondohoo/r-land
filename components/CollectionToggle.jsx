@@ -11,7 +11,7 @@ const CollectionToggle = ({ setPageState, pageState }) => {
         className="flex gap-2 flex-col justify-center w-1/2 items-center"
       >
         <div
-          className={`flex items-center justify-center ${
+          className={`flex items-center gap-3 justify-center ${
             pageState ? "text-rland-red" : "text-rland-gray"
           }`}
         >
