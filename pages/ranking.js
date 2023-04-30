@@ -20,7 +20,7 @@ const ranking = () => {
   }, []);
   return (
     <div className="bg-rland-black">
-      <div className=" pt-[5%]">
+      <div>
         {rankingList?.length > 0 && (
           <div className="relative">
             <div className="absolute w-3/4 h-full gap-8 flex justify-center items-center">
