@@ -27,7 +27,7 @@ const BottomNav = () => {
   return (
     visible && (
       <div className="">
-        <div className="w-full flex justify-center items-center">
+        <div className=" animate-heart-pulse w-full flex justify-center items-center">
           <Link href="/map">
             <FiMapPin
               className={`${
