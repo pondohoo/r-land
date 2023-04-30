@@ -20,6 +20,36 @@ const Map = () => {
   const [games, setGames] = useState([]);
   const [valid, setValid] = useState(0);
   const [game, setGame] = useState({});
+  const gameDate = new Date("2023-04-30T04:03:00");
+  const gameDateCountdown = new Date("2022-04-30T04:19:30");
+
+  const calculateTimeLeft = () => {
+    const difference = +gameDate - +new Date();
+    if (difference <= 0) {
+      return 0;
+    }
+    const timeRemaining = {
+      hours: Math.floor(difference / (1000 * 60 * 60)),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+    return timeRemaining;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const calculateGameCountdown = () => {
+    const difference = +gameDateCountdown - +new Date();
+    if (difference <= 0) {
+      return 0;
+    }
+    const timeRemaining = {
+      hours: Math.floor(difference / (1000 * 60 * 60)),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+    return timeRemaining;
+  };
+  const [countdown, setCountdown] = useState(calculateGameCountdown);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -44,7 +74,20 @@ const Map = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+    if (timeLeft !== 0) {
+      const intervalId = setTimeout(
+        () => setTimeLeft(calculateTimeLeft()),
+        1000
+      );
+      return () => clearTimeout(intervalId);
+    } else if (countdown !== 0) {
+      const intervalId = setTimeout(
+        () => setCountdown(calculateGameCountdown()),
+        1000
+      );
+      return () => clearTimeout(intervalId);
+    }
+  }, [timeLeft, countdown]);
 
   const determineValid = (games) => {
     if (games.length === 0) {
@@ -79,9 +122,17 @@ const Map = () => {
               href={`/games/${game.card}`}
               className={`px-8 py-1 bg-rland-red font-pirata ${
                 valid === 1 ? "hidden" : "block"
-              } ${valid === 2 ? "!bg-rland-red" : "!bg-rland-gray"}`}
+              } ${
+                valid === 2 && timeLeft == 0
+                  ? "!bg-rland-red"
+                  : "!bg-rland-gray"
+              }`}
             >
-              JOIN
+              {countdown != 0
+                ? timeLeft != 0
+                  ? timeLeft.minutes + ":" + timeLeft.seconds
+                  : countdown.minutes + ":" + countdown.seconds
+                : "GAME IN PROGRESS"}
             </Link>
           </div>
           <GoogleMap
