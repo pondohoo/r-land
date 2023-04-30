@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import Camera from "react-html5-camera-photo";
 import "react-html5-camera-photo/build/css/index.css";
+import Timer from "../../components/Timer";
+import { BsFillSendFill } from "react-icons/bs";
+import { BsArrowRepeat } from "react-icons/bs";
 
 const Hearts = () => {
   const [image, setImage] = useState(null);
@@ -50,21 +53,38 @@ const Hearts = () => {
   };
 
   return (
-    <div>
-      {!image && (
-        <Camera
-          onTakePhoto={(dataUri) => {
-            takePhoto(dataUri);
-          }}
-        />
-      )}
+    <div className=" relative w-screen flex justify-start items-center flex-col">
+      <Timer />
+      <img className=" left-[15%] top-[21%] absolute" src="/Rectangle 57.svg" />
+      <img className=" left-[19%] top-[25%] absolute" src="/Group 59.svg" />
+      <p className="mt-[5%] shadow-2xl text-6xl text-center text-rland-red font-pirata">
+        {" "}
+        WANTED
+      </p>
+      <p className="top-[27%] absolute text-white font-teko text-4xl">
+        Norm the Orange
+      </p>
+      <div className="h-full mt-[30%] flex flex-col w-3/5 ">
+        {!image && (
+          <Camera
+            onTakePhoto={(dataUri) => {
+              takePhoto(dataUri);
+            }}
+          />
+        )}
 
-      {image && <img src={image} />}
+        {image && <img src={image} />}
+        <div className="left-0 absolute flex justify-evenly top-[85%] w-screen">
+          <button className=" text-white text-4xl" onClick={execute}>
+            <BsArrowRepeat />
+          </button>
+          <button className=" text-white text-3xl" onClick={() => setImage("")}>
+            <BsFillSendFill />
+          </button>
+        </div>
 
-      <button onClick={execute}>Submit</button>
-      <button onClick={() => setImage("")}>Cancel</button>
-
-      {win && <p>YOU WON</p>}
+        {win && <p className="text-white">YOU WON</p>}
+      </div>
     </div>
   );
 };
