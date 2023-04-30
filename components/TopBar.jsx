@@ -25,7 +25,20 @@ const TopBar = () => {
     }
   }, [router.asPath]);
 
-  return (
+  return router.asPath.includes("games") ? (
+    <div className=" flex items-center justify-center bg-rland-black h-12">
+      <div className=" items-center w-full font-pirata flex-row flex justify-evenly">
+        <BsFillSuitSpadeFill className="text-white text-xl" />
+        <BsFillSuitHeartFill className="text-rland-red text-xl" />
+        <BsFillSuitClubFill className="text-white text-xl" />
+        <BsFillSuitDiamondFill className="text-rland-red text-xl" />
+        <BsFillSuitSpadeFill className="text-white text-xl" />
+        <BsFillSuitHeartFill className="text-rland-red text-xl" />
+        <BsFillSuitClubFill className="text-white text-xl" />
+        <BsFillSuitDiamondFill className="text-rland-red text-xl" />
+      </div>
+    </div>
+  ) : (
     title && (
       <div className=" flex items-center justify-center bg-rland-black h-12">
         <div className=" items-center w-full font-pirata flex-row flex justify-evenly">

@@ -36,7 +36,7 @@ const Game = () => {
   }, []);
 
   return (
-    <div className="h-1/2 absolute inset-x-0 bottom-10 flex flex-col justify-end bg-rland-darkgray/30">
+    <div className="mabsolute h-2/5 inset-x-0 bottom-10 flex flex-col justify-end bg-rland-darkgray/30">
       <div className="flex h-5/6 -mb-5 m-5 flex-col flex-none gap-2">
         <ScrollableFeed>
           {messages.map((msg, index) => (
