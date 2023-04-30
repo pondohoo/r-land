@@ -6,6 +6,13 @@ const Message = ({ message, sender, time }) => {
   const { user } = useContext(UserContext);
   console.log(sender);
   console.log(user.userName);
+  const fixDate = (date) => {
+		const dateLocal = new Date(date);
+		const newDate = new Date(
+			dateLocal.getTime() - dateLocal.getTimezoneOffset() * 60 * 1000
+		);
+		return newDate;
+	};
   return (
     <div className="w-full flex flex-row items-center justify-center">
       <div
@@ -38,7 +45,7 @@ const Message = ({ message, sender, time }) => {
             {message}
           </p>
           <p className="text-xs text-rland-gray text-teko">
-            {new Date(time.seconds * 1000).toUTCString()}
+            {fixDate(new Date(time.seconds * 1000)).toUTCString().replace(' GMT', '')};
           </p>
         </div>
         {sender == user.userName && (
