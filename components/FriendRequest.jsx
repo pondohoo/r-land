@@ -1,52 +1,39 @@
 import React from "react";
-import {
-  doc,
-  updateDoc,
-  arrayUnion,
-  arrayRemove,
-  setDoc,
-} from "firebase/firestore";
-import { db } from "../firebase";
+import axios from "axios";
 import UserContext from "./UserContext";
 import { useContext } from "react";
 
-const FriendRequest = ({ friend }) => {
+const FriendRequest = ({ friend, key }) => {
   const { user } = useContext(UserContext);
-  const confirmFriend = async () => {
-    await updateDoc(doc(db, "users", user.uid), {
-      pendingList: arrayRemove({
-        friendID: friend.friendID,
-        friendName: friend.friendName,
-      }),
-    });
-    await updateDoc(doc(db, "users", friend.friendID), {
-      friendList: arrayUnion({
-        friendID: user.uid,
-        friendName: user.userName,
-      }),
-    });
-    await updateDoc(doc(db, "users", user.uid), {
-      friendList: arrayUnion({
-        friendID: friend.friendID,
-        friendName: friend.friendName,
-      }),
-    });
-    const chatID =
-      friend.friendID > user.uid
-        ? friend.friendID + "-" + user.uid
-        : user.uid + "-" + friend.friendID;
-    const chatDoc = await getDocs(db, "chats", chatID);
-    if (!chatDoc.exists()) {
-      await setDoc(doc, (db, "chats", chatID), { messages: [] });
-    }
-    alert("friend added");
+  const confirmFriend = () => {
+    const code =
+      user.uid > friend.user
+        ? user.uid + "_" + friend.user
+        : friend.user + "_" + user.uid;
+    axios.post("/api/confirmFriend", { friendID: code });
   };
   return (
-    <div>
-      <p>{friend.friendName}</p>
-      <button className="text-white" onClick={() => confirmFriend(friend)}>
-        confirm
-      </button>
+    <div
+      className={`flex flex-row items-center w-full justify-center my-4 ${
+        key % 2 == 0 ? "bg-rland-darkgray" : ""
+      }`}
+    >
+      <div className="flex flex-row items-center justify-between w-10/12">
+        <div className="flex flex-row justify-center items-center">
+          <div className="bg-[#956787] w-[50px] h-[50px] rounded-full flex items-center justify-center ">
+            <p className="font-teko text-5xl text-white p-0">
+              {friend.name[0]}
+            </p>
+          </div>
+          <p className="text-white text-2xl font-teko ml-5">{friend.name}</p>
+        </div>
+        <button
+          className="text-white bg-rland-red py-1 px-4 font-teko text-xl"
+          onClick={() => confirmFriend(friend)}
+        >
+          confirm
+        </button>
+      </div>
     </div>
   );
 };

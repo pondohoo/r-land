@@ -23,6 +23,7 @@ const addNewFriend = () => {
       friend: friendID,
       user: user.uid,
       name: friendName,
+      name2: user.userName,
     });
     alert("Friend request sent to " + friendName);
     router.push("/profile");
