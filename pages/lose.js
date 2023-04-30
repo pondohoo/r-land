@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import collect from "../public/collect.svg";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import UserContext from "../components/UserContext";
+import axios from "axios";
 
-const win = () => {
+const Lose = () => {
+  const { user, setUser } = useContext(UserContext);
+
+  const removePoints = () => {
+    axios.post("/api/removePoints", { uid: user.uid });
+    setUser({ ...user, score: user.score - 3 });
+  };
+
   return (
     <div className=" items-center flex-col flex h-screen w-screen relative">
       <p className="mt-[10%] text-white font-pirata text-7xl">FAILURE</p>
@@ -16,15 +26,17 @@ const win = () => {
       >
         <img src="/CardBack.svg" />
       </motion.div>
-      <motion.a
+      <motion.div
         whileTap={{ opacity: 0.2 }}
-        href="/collection"
         className="mt-[15%] animate-heart-pulse"
+        onClick={removePoints}
       >
-        <Image className="mt-[350%]" src={collect} />
-      </motion.a>
+        <Link href="/collection">
+          <Image className="mt-[450%]" src={collect} />
+        </Link>
+      </motion.div>
     </div>
   );
 };
 
-export default win;
+export default Lose;
