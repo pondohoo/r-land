@@ -14,6 +14,7 @@ import { QRCodeSVG } from "qrcode.react";
 import { useZxing } from "react-zxing";
 
 const AddFriends = ({ setAddingFriends }) => {
+  const [friendID, setFriendID] = useState("");
   const checkUser = (list, userID) => {
     for (let i = 0; i < list.length; i++) {
       if (list[i].friendID == userID) {
@@ -23,11 +24,11 @@ const AddFriends = ({ setAddingFriends }) => {
     }
     return false;
   };
-  const [friendID, setFriendID] = useState("");
   const { user } = useContext(UserContext);
   const { ref } = useZxing({
     onResult(result) {
-      setResult(result.getText());
+      setFriendID(result.getText());
+      alert("find");
     },
   });
   const addFriend = async (friendID) => {
@@ -84,13 +85,13 @@ const AddFriends = ({ setAddingFriends }) => {
   return (
     <div>
       <input
-        className="border-black border-2"
+        className="border-black border-2 text-black"
         value={friendID}
         onChange={(input) => {
           setFriendID(input.target.value);
         }}
       />
-      <QRCodeSVG value={user.uid} size={300} />
+      <QRCodeSVG value={user.uid} size={100} className="m-3" />
       <button onClick={() => addFriend(friendID)}>add Friends</button>AddFriends
       <div className="sm:w-1/2 w-11/12 flex justify-center items-center">
         <video ref={ref} className="w-10/12 border-8 border-white" />
