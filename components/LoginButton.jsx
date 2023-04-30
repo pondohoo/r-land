@@ -25,23 +25,20 @@ const LoginButton = () => {
         joinTime: Timestamp.now(),
         friendList: [],
         pendingList: [],
-        cardList: [],
+        cardList: {},
+        score: 0,
       });
       setUser({
         userName: user.displayName,
         uid: user.uid,
         joinTime: Timestamp.now(),
         friendList: [],
-        cardList: [],
+        pendingList: [],
+        cardList: {},
+        score: 0,
       });
     } else {
-      setUser({
-        name: docSnap.data().userName,
-        uid: user.uid,
-        joinTime: docSnap.data().joinTIme,
-        friendList: docSnap.data().friendList,
-        cardList: docSnap.data().cardList,
-      });
+      setUser(docSnap.data());
     }
   };
 
