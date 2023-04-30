@@ -39,39 +39,41 @@ const Game = () => {
   }, []);
 
   return (
-    <div className="mabsolute h-2/5 inset-x-0 bottom-10 flex flex-col justify-end bg-rland-darkgray/30">
-      <div className="flex h-5/6 -mb-5 m-5 flex-col flex-none gap-2">
-        <ScrollableFeed>
-          {messages.map((msg, index) => (
-            <div
-              key={index}
-              className="flex flex-none break-words items-center gap-1 text-white text-xl font-teko font-thin"
-            >
-              {user.uid == msg.uid ? (
-                <div className="bg-rland-red h-5 w-1" />
-              ) : (
-                <div className="bg-rland-gray h-5 w-1" />
-              )}
-              <p className="">{msg.msg}</p>
-            </div>
-          ))}
-        </ScrollableFeed>
-      </div>
+    user && (
+      <div className="mabsolute h-2/5 inset-x-0 bottom-10 flex flex-col justify-end bg-rland-darkgray/30">
+        <div className="flex h-5/6 -mb-5 m-5 flex-col flex-none gap-2">
+          <ScrollableFeed>
+            {messages.map((msg, index) => (
+              <div
+                key={index}
+                className="flex flex-none break-words items-center gap-1 text-white text-xl font-teko font-thin"
+              >
+                {user.uid == msg.uid ? (
+                  <div className="bg-rland-red h-5 w-1" />
+                ) : (
+                  <div className="bg-rland-gray h-5 w-1" />
+                )}
+                <p className="">{msg.msg}</p>
+              </div>
+            ))}
+          </ScrollableFeed>
+        </div>
 
-      <div className="flex mb-10 inset-x-0 justify-center gap-5">
-        <form onSubmit={send}>
-          <input
-            type="text"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            className="w-3/4 bg-rland-darkgray"
-          />
-          <button onClick={send}>
-            <Image src={sendButton} alt="" />
-          </button>
-        </form>
+        <div className="flex mb-10 inset-x-0 justify-center gap-5">
+          <form onSubmit={send}>
+            <input
+              type="text"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="w-3/4 bg-rland-darkgray"
+            />
+            <button onClick={send}>
+              <Image src={sendButton} alt="" />
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    )
   );
 };
 

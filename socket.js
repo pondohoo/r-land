@@ -6,9 +6,3 @@ export const socket = io(URL, {
   autoConnect: false,
   transports: ["websocket", "polling"],
 });
-// export const socket = null;
-
-// USE THIS WHEN WE HAVE AUTH WORKING PROPERLY
-// export const socket = io(URL, {
-//     autoConnect: false
-//   });
