@@ -13,10 +13,13 @@ import {
 } from "@react-google-maps/api";
 import UserContext from "../components/UserContext";
 import axios from "axios";
+import Link from "next/link";
 
 const Map = () => {
   const { position } = useContext(UserContext);
   const [games, setGames] = useState([]);
+  const [valid, setValid] = useState(0);
+  const [game, setGame] = useState({});
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -36,16 +39,51 @@ const Map = () => {
       .post("/api/getGames")
       .then((response) => {
         setGames(response.data);
+        determineValid(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
+  const determineValid = (games) => {
+    if (games.length === 0) {
+      setValid(1);
+      return;
+    }
+    games.forEach((game) => {
+      if (
+        game.lat - 0.001 <= position.lat &&
+        position.lat <= game.lat + 0.001 &&
+        game.lng - 0.001 <= position.lng &&
+        position.lng <= game.lng + 0.001
+      ) {
+        setValid(2);
+        setGame(game);
+      }
+    });
+  };
+
   return (
     <div>
       {isLoaded && position && (
         <div className="absolute top-0 left-0">
+          <div className="mt-12 bg-rland-black text-white flex justify-center items-center flex-col text-xl p-2">
+            <p className="font-teko">
+              {valid === 1 && "there are no games nearby"}
+              {valid === 2
+                ? "you are within game range"
+                : "you are not within game range"}
+            </p>
+            <Link
+              href={`/games/${game.card}`}
+              className={`px-8 py-1 bg-rland-red font-pirata ${
+                valid === 1 ? "hidden" : "block"
+              } ${valid === 2 ? "!bg-rland-red" : "!bg-rland-gray"}`}
+            >
+              JOIN
+            </Link>
+          </div>
           <GoogleMap
             center={position}
             zoom={15}
@@ -62,7 +100,6 @@ const Map = () => {
               mapTypeControl: false,
             }}
           >
-            <Marker position={position} />
             {games.map((game, index) => (
               <GroundOverlay
                 key={index}
@@ -75,6 +112,7 @@ const Map = () => {
                 }}
               />
             ))}
+            <Marker position={position} />
           </GoogleMap>
         </div>
       )}
