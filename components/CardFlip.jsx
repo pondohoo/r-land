@@ -28,13 +28,19 @@ const CardFlip = ({ pattern, lat, time, long, points, number }) => {
       </p>
       <motion.div
         key="modal"
-        className=" mx-5 h-full"
+        className=" mx-5"
         initial="initial"
         whileInView="inView"
         exit="exit"
         variants={variants}
       >
-        <Image src="/Card.svg" width={400} height={500} alt="card" />
+        <Image
+          src="/Card.svg"
+          className="min-w-[200px]"
+          width={400}
+          height={500}
+          alt="card"
+        />
         <div className=" -scale-x-100 mx-auto font-thin text-2xl flex text-white font-teko flex-col text-left">
           <div className="m-0 text-rland-gray flex gap-2">
             <p className="m-0">LAT:{lat}</p>
