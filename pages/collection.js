@@ -79,16 +79,16 @@ const collection = () => {
     <div className="flex flex-col justify-around items-stretch w-full h-full">
       <CollectionToggle setPageState={setPageState} pageState={pageState} />
 
-      <div className="flex flex-col mt-3">
+      <div className="flex flex-col my-10">
         <div className="flex justify-center items-center flex-col">
           <p className="text-white font-pirata text-3xl">SPADE 5</p>
           <p className="text-rland-gray font-teko text-xl">4.22.2023</p>
         </div>
         <CardsFlip />
       </div>
-      <div className="h-1/3">
-        <hr className="mt-10 border-rland-red" />
-        <div className="bg-gradient-to-b pt-3 opacity-20 from-rland-red w-screen h-1/4" />
+      <div className=" h-full">
+        <hr className=" border-rland-red" />
+        <div className="bg-gradient-to-b opacity-20 from-rland-red w-screen h-1/5" />
         <div className="flex items-center justify-around">
           <p className="text-rland-red font-teko text-4xl">25 points</p>
         </div>
