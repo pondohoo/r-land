@@ -17,7 +17,7 @@ const profile = () => {
         <div className=" flex font-teko items-center flex-col justify-center h-full">
           <div className="bg-[#956787] w-[100px] h-[100px] rounded-full flex items-center justify-center mb-4">
             <p className="font-teko text-7xl text-white p-0">
-              {user?.userName[0]}
+              {user && user.userName[0]}
             </p>
           </div>
           <p className=" text-white text-5xl uppercase ">{user?.userName}</p>
