@@ -1,22 +1,44 @@
+import { useRouter } from "next/router";
 import React from "react";
+import UserContext from "../components/UserContext";
+import { useContext } from "react";
+import axios from "axios";
 
-const addNewFriend = ({ friendID, friendName }) => {
-  console.log(friendID);
-  console.log(friendName);
+const addNewFriend = () => {
+  const router = useRouter();
+  const { user } = useContext(UserContext);
+  const { friendID, friendName } = router.query;
 
-  const add = () => {
-    axios.post("/api/addFriend", {
+  console.log(user?.uid);
+  const add = async () => {
+    if (!user) {
+      alert("fail send friend request to " + friendName);
+      return;
+    }
+    if (user.uid == friendID) {
+      alert("you cannot add yourself");
+      return;
+    }
+    await axios.post("/api/addFriend", {
       friend: friendID,
       user: user.uid,
       name: friendName,
     });
-    alert("Friend request sent to " + name);
+    alert("Friend request sent to " + friendName);
+    router.push("/profile");
   };
 
   return (
-    <div>
-      <div>{friendName} as a friend</div>
-      <button onClick={() => add()}> Add</button>
+    <div className="flex flex-col items-center justify-center h-full">
+      <div className="text-white text-3xl font-pirata">
+        Add {friendName} as a friend
+      </div>
+      <button
+        className="text-white bg-rland-red font-teko text-2xl py-2 px-4 mt-2"
+        onClick={() => add()}
+      >
+        Confirm
+      </button>
     </div>
   );
 };
