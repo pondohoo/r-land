@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import patternBar from "../public/Pattern_bar.svg";
 import collect from "../public/collect.svg";
 import { motion } from "framer-motion";
 
@@ -24,9 +23,6 @@ const win = () => {
       >
         <Image className="mt-[450%]" src={collect} />
       </motion.a>
-
-      <Image className="absolute top-3" src={patternBar} />
-      <Image className="absolute bottom-3" src={patternBar} />
     </div>
   );
 };
