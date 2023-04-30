@@ -23,8 +23,8 @@ const ranking = () => {
         {rankingList?.length > 0 && (
           <div className="relative">
             <div className="absolute w-3/4 h-full gap-8 flex justify-center items-center">
-              <div className="bg-white w-[70px] h-[70px] flex items-center justify-center">
-                <p className="font-teko text-6xl text-center text-rland-darkgray p-0">
+              <div className="bg-[#50beca] w-[70px] h-[70px] flex items-center justify-center">
+                <p className="font-teko text-6xl text-center text-white p-0">
                   {rankingList[0].userName[0]}
                 </p>
               </div>
@@ -57,8 +57,8 @@ const ranking = () => {
                   </p>
                 </div>
               </div>
-              <div className="bg-white w-[70px] h-[70px] flex items-center justify-center">
-                <p className="font-teko text-6xl text-center text-rland-darkgray p-0">
+              <div className="bg-[#ae6dd4]  w-[70px] h-[70px] flex items-center justify-center">
+                <p className="font-teko text-6xl text-center text-white p-0">
                   {rankingList[1].userName[0]}
                 </p>
               </div>
@@ -69,8 +69,8 @@ const ranking = () => {
         {rankingList?.length > 2 && (
           <div className="relative">
             <div className="absolute w-3/4 h-full gap-8 flex justify-center items-center">
-              <div className="bg-white w-[70px] h-[70px] flex items-center justify-center">
-                <p className="font-teko text-6xl text-center text-rland-darkgray p-0">
+              <div className="bg-[#81d366]  w-[70px] h-[70px] flex items-center justify-center">
+                <p className="font-teko text-6xl text-center text-white p-0">
                   {rankingList[2].userName[0]}
                 </p>
               </div>
@@ -103,8 +103,8 @@ const ranking = () => {
                   </p>
                 </div>
               </div>
-              <div className="bg-white w-[70px] h-[70px] flex items-center justify-center">
-                <p className="font-teko text-6xl text-center text-rland-darkgray p-0">
+              <div className="bg-[#f29640]  w-[70px] h-[70px] flex items-center justify-center">
+                <p className="font-teko text-6xl text-center text-white p-0">
                   {rankingList[2].userName[0]}
                 </p>
               </div>
@@ -115,8 +115,8 @@ const ranking = () => {
         {rankingList?.length > 4 && (
           <div className="relative">
             <div className="absolute w-3/4 h-full gap-8 flex justify-center items-center">
-              <div className="bg-white w-[70px] h-[70px] flex items-center justify-center">
-                <p className="font-teko text-6xl text-center text-rland-darkgray p-0">
+              <div className="bg-[#50beca]  w-[70px] h-[70px] flex items-center justify-center">
+                <p className="font-teko text-6xl text-center text-white p-0">
                   {rankingList[4].userName[0]}
                 </p>
               </div>
