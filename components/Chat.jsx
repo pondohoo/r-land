@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { socket } from "../socket";
+import React, { useContext, useState } from "react";
+// import { socket } from "../socket";
 import UserContext from "../components/UserContext";
 import Image from "next/image";
 import sendButton from "../public/sendButton.svg";
@@ -7,33 +7,33 @@ import ScrollableFeed from "react-scrollable-feed";
 
 const Game = () => {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [messages] = useState([]);
   const { user } = useContext(UserContext);
 
-  const send = () => {
-    setMessages([
-      ...messages,
-      { msg: message, name: user.name[0], uid: user.uid },
-    ]);
-    setMessage("");
-    socket.emit("games", { msg: message, name: user.name[0], uid: user.uid });
-  };
+  // const send = () => {
+  //   setMessages([
+  //     ...messages,
+  //     { msg: message, name: user.name[0], uid: user.uid },
+  //   ]);
+  //   setMessage("");
+  //   socket.emit("games", { msg: message, name: user.name[0], uid: user.uid });
+  // };
 
-  useEffect(() => {
-    socket.emit("join", "RANDOM ROOM ID");
+  // useEffect(() => {
+  //   socket.emit("join", "RANDOM ROOM ID");
 
-    socket.on("games", (msg) => {
-      setMessages((messages) => [
-        ...messages,
-        { name: msg.name[0], msg: msg.msg, uid: msg.uid },
-      ]);
-    });
+  //   socket.on("games", (msg) => {
+  //     setMessages((messages) => [
+  //       ...messages,
+  //       { name: msg.name[0], msg: msg.msg, uid: msg.uid },
+  //     ]);
+  //   });
 
-    return () => {
-      socket.off("games");
-      socket.emit("leave", "RANDOM ROOM ID");
-    };
-  }, []);
+  //   return () => {
+  //     socket.off("games");
+  //     socket.emit("leave", "RANDOM ROOM ID");
+  //   };
+  // }, []);
 
   return (
     <div className="mabsolute h-2/5 inset-x-0 bottom-10 flex flex-col justify-end bg-rland-darkgray/30">
