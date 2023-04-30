@@ -22,6 +22,7 @@ const Map = () => {
   const [game, setGame] = useState({});
   const gameDate = new Date("2023-04-30T04:03:00");
   const gameDateCountdown = new Date("2022-04-30T04:19:30");
+  const { setGameContext } = useContext(UserContext);
 
   const calculateTimeLeft = () => {
     const difference = +gameDate - +new Date();
@@ -119,6 +120,15 @@ const Map = () => {
             </p>
             <Link
               href={`/games/${game.card}`}
+              onClick={() => {
+                setGameContext({
+                  points: 3,
+                  pattern: "hearts",
+                  number: 2,
+                  lat: game.lat,
+                  lng: game.lng,
+                });
+              }}
               className={`px-8 py-1 bg-rland-red font-pirata ${
                 valid === 1 ? "hidden" : "block"
               } ${
