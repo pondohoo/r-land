@@ -1,45 +1,100 @@
 import React from "react";
-import { doc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  getDoc,
+  arrayRemove,
+} from "firebase/firestore";
 import { useState } from "react";
 import UserContext from "./UserContext";
 import { useContext } from "react";
 import { db } from "../firebase";
+import { QRCodeSVG } from "qrcode.react";
+import { useZxing } from "react-zxing";
 
-const AddFriends = () => {
-  const [fiendID, setFiendID] = useState("");
+const AddFriends = ({ setAddingFriends }) => {
+  const checkUser = (list, userID) => {
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].friendID == userID) {
+        console.log("has");
+        return true;
+      }
+    }
+    return false;
+  };
+  const [friendID, setFriendID] = useState("");
   const { user } = useContext(UserContext);
-
-  const addFriend = async (fiendID) => {
-    const docSnap = await getDoc(doc(db, "users", fiendID));
-    if (!docSnap.exists()) {
+  const { ref } = useZxing({
+    onResult(result) {
+      setResult(result.getText());
+    },
+  });
+  const addFriend = async (friendID) => {
+    if (friendID == user.uid) {
+      alert("you cannot add yourself as a friend");
+      return;
+    }
+    console.log(user.friendList);
+    if (checkUser(user.friendList, friendID)) {
+      alert("you already have this friend");
+      return;
+    }
+    const friend = await getDoc(doc(db, "users", friendID));
+    if (!friend.exists()) {
       alert("user not found");
       return;
     }
-    updateDoc(doc(db, "users", fiendID), {
-      friendList: arrayUnion({ friendID: fiendID, status: "pending" }),
-    }).then(
-      updateDoc(doc(db, "users", user.uid), {
-        friendList: arrayUnion({ friendID: user.uid, status: "not confirm" }),
-      })
-        .then(() => {
-          alert("waiting for your friend to confirm");
-        })
-        .error(() => {
-          console.log("error add friends");
-        })
-    );
+    // if the friedn is in my pending list
+    if (checkUser(user.pendingList, friendID)) {
+      console.log("the friedn is in my pending list");
+      await updateDoc(doc(db, "users", user.uid), {
+        pendingList: arrayRemove({
+          friendID: friendID,
+          friendName: friend.data().userName,
+        }),
+      });
+      await updateDoc(doc(db, "users", user.uid), {
+        friendList: arrayUnion({
+          friendID: friendID,
+          friendName: friend.data().userName,
+        }),
+      });
+      await updateDoc(doc(db, "users", friendID), {
+        friendList: arrayUnion({
+          friendID: user.uid,
+          friendName: user.userName,
+        }),
+      });
+      alert("friend added");
+      return;
+    }
+    if (checkUser(friend.data().pendingList, user.uid)) {
+      alert("friend request already sent");
+      return;
+    }
+    await updateDoc(doc(db, "users", friendID), {
+      pendingList: arrayUnion({
+        friendID: user.uid,
+        friendName: user.userName,
+      }),
+    });
+    alert("friend request send");
   };
   return (
     <div>
-      <div>{user?.uid}</div>
       <input
         className="border-black border-2"
-        value={fiendID}
+        value={friendID}
         onChange={(input) => {
-          setFiendID(input.target.value);
+          setFriendID(input.target.value);
         }}
       />
-      <button onClick={() => addFriend(fiendID)}>add Friends</button>AddFriends
+      <QRCodeSVG value={user.uid} size={300} />
+      <button onClick={() => addFriend(friendID)}>add Friends</button>AddFriends
+      <div className="sm:w-1/2 w-11/12 flex justify-center items-center">
+        <video ref={ref} className="w-10/12 border-8 border-white" />
+      </div>
     </div>
   );
 };
