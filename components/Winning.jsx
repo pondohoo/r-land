@@ -10,25 +10,25 @@ import { useContext } from "react";
 
 const Winning = ({ pattern, number, points, time, lat, long }) => {
   const router = useRouter();
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const back = async () => {
     console.log(user);
-    setUser({
-      ...user,
-      cardList: [
-        ...user.cardList,
-        {
-          spade: {
-            [number]: {
-              lat: lat,
-              long: long,
-              points: points,
-              time: time,
-            },
-          },
-        },
-      ],
-    });
+    // setUser({
+    //   ...user,
+    //   cardList: [
+    //     ...user.cardList,
+    //     {
+    //       spade: {
+    //         [number]: {
+    //           lat: lat,
+    //           long: long,
+    //           points: points,
+    //           time: time,
+    //         },
+    //       },
+    //     },
+    //   ],
+    // });
     await axios.post("/api/addCard", {
       card: { pattern },
       number: { number },
