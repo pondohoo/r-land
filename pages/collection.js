@@ -114,7 +114,7 @@ const collection = () => {
       </div>
     </div>
   ) : (
-    <div className="flex flex-col justify-start w-full bg-rland-darkgray">
+    <div className="flex flex-col justify-start w-full ">
       <div className="h-5/6 flex flex-col justify-center">
         <CollectionToggle setPageState={setPageState} pageState={pageState} />
         <div className="justify-center items-center gap-0 grid-cols-4 grid">
