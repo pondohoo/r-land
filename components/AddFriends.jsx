@@ -32,7 +32,7 @@ const AddFriends = ({ setAddingFriends }) => {
       <QRCode
         size={256}
         style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-        value={user.uid}
+        value={`https://r-land.vercel.app/addNewFriend?friendID=${user.uid}friendName=${user.userName}`}
         viewBox={`0 0 256 256`}
       />
       <span className="text-white">{friendID + "_" + user.name}</span>
