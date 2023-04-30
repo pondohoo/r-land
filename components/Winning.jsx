@@ -8,8 +8,8 @@ import axios from "axios";
 
 const Winning = ({ pattern, number, points, time, lat, long }) => {
   const router = useRouter();
-  const back = () => {
-    axios.post("/api/addCard", {
+  const back = async () => {
+    await axios.post("/api/addCard", {
       card: { pattern },
       number: { number },
       time: { time },
