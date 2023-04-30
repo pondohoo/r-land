@@ -11,16 +11,16 @@ const chat = () => {
   return (
     <>
       {inChat ? (
-        <ChatScreen chat={chat} />
+        <ChatScreen setInChat={setInChat} chat={chat} />
       ) : (
         <div>
           {user?.pendingList.map((friend) => {
             return <FriendRequest key={friend.friendID} friend={friend} />;
           })}
-          {user?.friendList.map((friend) => {
+          {user?.friendList.map((friend, index) => {
             return (
               <Friend
-                key={friend.friendID}
+                key={index}
                 friend={friend}
                 setChat={setChat}
                 setInChat={setInChat}

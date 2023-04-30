@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { BsFillXDiamondFill, BsChatLeftTextFill } from "react-icons/bs";
+import {
+  BsFillSuitSpadeFill,
+  BsFillSuitHeartFill,
+  BsFillSuitClubFill,
+  BsFillSuitDiamondFill,
+  BsFillXDiamondFill,
+  BsChatLeftTextFill,
+} from "react-icons/bs";
 import { AiFillTrophy } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { FiMapPin } from "react-icons/fi";
@@ -24,10 +31,23 @@ const BottomNav = () => {
     }
   }, [router.asPath]);
 
-  return (
+  return router.asPath.includes("games") ? (
+    <div className="-mt-2 flex items-center justify-center bg-gradient-to-t from-rland-black from-80% h-12">
+      <div className=" items-center w-full font-pirata flex-row flex justify-evenly">
+        <BsFillSuitSpadeFill className="text-white text-xl" />
+        <BsFillSuitHeartFill className="text-rland-red text-xl" />
+        <BsFillSuitClubFill className="text-white text-xl" />
+        <BsFillSuitDiamondFill className="text-rland-red text-xl" />
+        <BsFillSuitSpadeFill className="text-white text-xl" />
+        <BsFillSuitHeartFill className="text-rland-red text-xl" />
+        <BsFillSuitClubFill className="text-white text-xl" />
+        <BsFillSuitDiamondFill className="text-rland-red text-xl" />
+      </div>
+    </div>
+  ) : (
     visible && (
-      <div className="">
-        <div className="w-full flex justify-center items-center">
+      <div className="z-10">
+        <div className="w-full flex justify-center items-center animate-heart-pulse">
           <Link href="/map">
             <FiMapPin
               className={`${

@@ -10,8 +10,6 @@ import { useState } from "react";
 import UserContext from "./UserContext";
 import { useContext } from "react";
 import { db } from "../firebase";
-import { QRCodeSVG } from "qrcode.react";
-import { useZxing } from "react-zxing";
 
 const AddFriends = ({ setAddingFriends }) => {
   const [friendID, setFriendID] = useState("");
@@ -25,12 +23,14 @@ const AddFriends = ({ setAddingFriends }) => {
     return false;
   };
   const { user } = useContext(UserContext);
-  const { ref } = useZxing({
-    onResult(result) {
-      setFriendID(result.getText());
-      alert("find");
-    },
-  });
+
+  // const { ref } = useZxing({
+  //   onResult(result) {
+  //     setFriendID(result.getText());
+  //     alert("find");
+  //   },
+  // });
+
   const addFriend = async (friendID) => {
     if (friendID == user.uid) {
       alert("you cannot add yourself as a friend");
@@ -82,6 +82,7 @@ const AddFriends = ({ setAddingFriends }) => {
     });
     alert("friend request send");
   };
+
   return (
     <div>
       <input
@@ -91,11 +92,9 @@ const AddFriends = ({ setAddingFriends }) => {
           setFriendID(input.target.value);
         }}
       />
-      <QRCodeSVG value={user.uid} size={100} className="m-3" />
+      {/* <QRCodeSVG value={user.uid} size={100} className="m-3" /> */}
+      <span className="text-white">{friendID}</span>
       <button onClick={() => addFriend(friendID)}>add Friends</button>AddFriends
-      <div className="sm:w-1/2 w-11/12 flex justify-center items-center">
-        <video ref={ref} className="w-10/12 border-8 border-white" />
-      </div>
     </div>
   );
 };

@@ -44,7 +44,9 @@ const FriendRequest = ({ friend }) => {
   return (
     <div>
       <p>{friend.friendName}</p>
-      <button onClick={() => confirmFriend(friend)}>confirm</button>
+      <button className="text-white" onClick={() => confirmFriend(friend)}>
+        confirm
+      </button>
     </div>
   );
 };
